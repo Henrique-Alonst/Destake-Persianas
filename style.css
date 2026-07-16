@@ -133,26 +133,21 @@ nav a:hover {
    3. HERO (SEÇÃO PRINCIPAL COM NEVOEIRO PRETO)
    ========================================================================== */
 .hero {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* em vez de center */
-  padding-top: 35vh; /* <<< ESSE é o controle: aumenta ou diminui pra descer/subir o bloco */
+  justify-content: flex-start;
+  padding-top: 120px;
   padding-bottom: 30px;
-  
-  /* Imagem nítida + "Nevoeiro Preto" (degradês sobrepostos para contraste) */
+
   background-image:
-    /* Nevoeiro denso na base (de baixo para cima) */
     linear-gradient(to top, rgba(10, 10, 11, 1) 0%, rgba(10, 10, 11, 0.85) 20%, rgba(10, 10, 11, 0.2) 60%, rgba(10, 10, 11, 0.5) 100%),
-    /* Nevoeiro lateral esquerdo para leitura do texto */
     linear-gradient(to right, rgba(10, 10, 11, 0.8) 0%, rgba(10, 10, 11, 0.4) 50%, transparent 100%),
     url('assets/background_2.png');
   
   background-size: cover;
   background-position: center;
-  padding-top: 120px; 
-  padding-bottom: 30px;
-  position: relative; 
+  position: relative;
+  min-height: 500px; /* substitui o 100vh — ajuste esse número até achar a altura ideal */
 }
 
 .hero::before {
