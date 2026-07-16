@@ -122,12 +122,12 @@ nav a:hover {
    3. HERO (SEÇÃO PRINCIPAL COM NEVOEIRO PRETO)
    ========================================================================== */
 .hero {
-  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: flex-start;
+  justify-content: flex-start; /* em vez de center */
+  padding-top: 35vh; /* <<< ESSE é o controle: aumenta ou diminui pra descer/subir o bloco */
+  padding-bottom: 30px;
   
   /* Imagem nítida + "Nevoeiro Preto" (degradês sobrepostos para contraste) */
   background-image:
@@ -154,11 +154,7 @@ nav a:hover {
 }
 
 .hero .wrap {
-  position: relative;
-  z-index: 2;
-  max-width: 1180px;
-  width: 100%;
-  margin: auto auto 40px auto; /* Mantém o texto acima dos diferenciais */
+  text-align: center; /* centraliza todo o conteúdo do hero */
 }
 
 h1 {
@@ -168,6 +164,10 @@ h1 {
   line-height: 1.1;
   color: #f7f2e6;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 15vh;
 }
 
 h1 em {
@@ -180,12 +180,14 @@ h1 em {
   font-size: 16px;
   line-height: 1.7;
   color: var(--cream);
-  max-width: 450px;
+  max-width: 850px;
   margin-bottom: 35px;
+  margin-left: auto;
+  margin-right: auto; /* centraliza o bloco de texto */
 }
 
 .btn {
-  display: inline-flex;
+  display: inline-flex; /* já é inline-flex, então respeita o text-align: center do pai */
   align-items: center;
   gap: 12px;
   padding: 16px 32px;
@@ -222,6 +224,7 @@ h1 em {
   max-width: 1180px;
   margin: 0 auto;
   padding: 25px 32px 10px 32px;
+  margin-top: 200px;
   /*border-top: 1px solid rgba(255, 255, 255, 0.08); /* Linha divisória fina */
 }
 
@@ -308,7 +311,7 @@ h1 em {
     background-image:
       linear-gradient(to top, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.55) 35%, rgba(10,10,11,0.15) 65%, rgba(10,10,11,0.35) 100%),
       linear-gradient(to right, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0.2) 60%, transparent 100%),
-      url('assets/background_2.png');
+      url('assets/background_1.png');
     background-size: cover;
     background-position: 30% center;
   }
@@ -319,22 +322,28 @@ h1 em {
   }
 
   h1 {
-    font-size: clamp(30px, 6.5vw, 30px) !important; /* era 20-26px */
-    line-height: 1.2;
-    margin-bottom: clamp(12px, 3vw, 16px);
-  }
+  font-size: clamp(20px, 6.5vw, 30px) !important;
+  line-height: 1.2;
+  margin-bottom: clamp(12px, 3vw, 16px);
+  margin-top: 20vh;   /* <<< sobe o título */
+  margin-left: 6vw;    /* <<< empurra pro centro */
+}
 
-  .hero p.lead {
-    font-size: clamp(13px, 3.4vw, 15px); /* era 12-13.5px */
-    line-height: 1.5;
-    margin-bottom: clamp(18px, 4vw, 24px);
-    max-width: 100%;
-  }
+.hero p.lead {
+  font-size: clamp(13px, 3.4vw, 15px);
+  line-height: 1.5;
+  margin-bottom: clamp(18px, 4vw, 24px);
+  max-width: 100%;
+  margin-top: 1vh;   /* mesmo valor do h1 pra manter o bloco junto */
+  margin-left: 6vw;
+}
 
-  .btn {
-    padding: clamp(11px, 2.7vw, 14px) clamp(22px, 5.5vw, 28px); /* levemente maior */
-    font-size: clamp(11px, 2.6vw, 12px);
-  }
+.btn {
+  padding: clamp(11px, 2.7vw, 14px) clamp(22px, 5.5vw, 28px);
+  font-size: clamp(11px, 2.6vw, 12px);
+  margin-top: -20vh;
+  margin-left: 6vw;
+}
 
   .diferenciais {
     display: flex;
