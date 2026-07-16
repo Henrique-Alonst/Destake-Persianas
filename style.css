@@ -266,9 +266,19 @@ h1 em {
 }
 
 /* ==========================================================================
-   5. RESPONSIVIDADE (MEDIA QUERIES)
+   5. RESPONSIVIDADE (QUERY ÚNICA E FLUIDA)
    ========================================================================== */
 @media(max-width: 980px) {
+  .wrap {
+    padding: 0 24px;
+  }
+
+  /* --- FIX: hambúrguer e menu lateral, que tinham sumido --- */
+  .burger {
+    display: flex;
+    z-index: 120;
+  }
+
   nav {
     position: fixed;
     top: 0;
@@ -286,64 +296,44 @@ h1 em {
   nav.open {
     right: 0;
   }
-  .burger {
-    display: flex;
-    z-index: 120;
-  }
-
-  .diferenciais {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 10px;
-    padding: 25px 15px 10px 15px;
-  }
-}
-
-/* ==========================================================================
-   5. RESPONSIVIDADE UNIFICADA 
-   ========================================================================== */
-@media(max-width: 560px) {
-  .wrap {
-    padding: 0 16px;
-  }
 
   .hero {
     min-height: 100vh;
-    padding-top: 80px;      /* Título bem posicionado próximo ao topo */
-    padding-bottom: 20px;   /* Diferenciais encostados na base */
-    justify-content: space-between;
+    padding-top: clamp(70px, 18vw, 100px);
+    padding-bottom: clamp(20px, 5vw, 30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     background-image:
       linear-gradient(to top, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.55) 35%, rgba(10,10,11,0.15) 65%, rgba(10,10,11,0.35) 100%),
       linear-gradient(to right, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0.2) 60%, transparent 100%),
       url('assets/background_2.png');
     background-size: cover;
-    background-position: 25% center; /* Mostra a janela da cidade perfeitamente */
+    background-position: 30% center;
   }
 
   .hero .wrap {
-    margin: 10px auto auto auto; /* Fixa o bloco de texto no topo */
+    margin: auto auto 40px auto;
+    width: 100%;
   }
 
   h1 {
-    font-size: 24px !important; 
-    line-height: 1.15;
-    margin-bottom: 10px;        
-    letter-spacing: 0.5px;
+    font-size: clamp(30px, 6.5vw, 30px) !important; /* era 20-26px */
+    line-height: 1.2;
+    margin-bottom: clamp(12px, 3vw, 16px);
   }
 
   .hero p.lead {
-    font-size: 12.5px;          
-    line-height: 1.4;
-    margin-bottom: 16px;        
+    font-size: clamp(13px, 3.4vw, 15px); /* era 12-13.5px */
+    line-height: 1.5;
+    margin-bottom: clamp(18px, 4vw, 24px);
     max-width: 100%;
-    color: rgba(236, 228, 211, 0.8); 
   }
 
   .btn {
-    padding: 10px 20px;         
-    font-size: 10.5px;          
+    padding: clamp(11px, 2.7vw, 14px) clamp(22px, 5.5vw, 28px); /* levemente maior */
+    font-size: clamp(11px, 2.6vw, 12px);
   }
 
   .diferenciais {
@@ -351,30 +341,32 @@ h1 em {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 6px;                   
-    padding: 15px 12px 10px 12px; 
+    gap: clamp(4px, 1.5vw, 10px);
+    padding: clamp(15px, 4vw, 20px) clamp(8px, 3vw, 16px) clamp(15px, 4vw, 20px);
   }
 
   .item {
     flex: 1;
     min-width: 0;
-    gap: 6px;                   
+    gap: clamp(6px, 2vw, 10px);
   }
 
   .item img {
-    height: 24px;               
+    height: clamp(24px, 6.2vw, 38px); /* era 20-34px */
     width: auto;
   }
 
   .item h3 {
-    font-size: 8.5px;           
-    letter-spacing: 0.5px;
+    font-size: clamp(9px, 2.4vw, 12px); /* era 8-11px */
+    letter-spacing: 0.3px;
     white-space: nowrap;
   }
 
   .item p {
-    font-size: 7.5px;           
+    font-size: clamp(8px, 2.1vw, 10.5px); /* era 7-9.5px */
     letter-spacing: 0px;
-    line-height: 1.1;
+    line-height: 1.2;
   }
 }
+
+
