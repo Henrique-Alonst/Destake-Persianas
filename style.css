@@ -13,6 +13,17 @@
   --line: #332e24;
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Jost', sans-serif;
+  --fog-blue: rgba(22, 48, 100, 0.55);
+  --fog-blue-soft: rgba(22, 48, 100, 0.28); 
+
+ /* --fog-blue: rgba(14, 32, 74, 0.55);
+--fog-blue-soft: rgba(14, 32, 74, 0.28); */
+
+ /*--fog-blue: rgba(24, 28, 68, 0.55);
+--fog-blue-soft: rgba(24, 28, 68, 0.28); */
+
+/*--fog-blue: rgba(18, 40, 60, 0.55);
+--fog-blue-soft: rgba(18, 40, 60, 0.28); */
 }
 
 * {
@@ -140,8 +151,24 @@ nav a:hover {
   background-size: cover;
   background-position: center;
   padding-top: 120px; 
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
+  position: relative; 
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* canto superior esquerdo, "escorrendo" em diagonal */
+    radial-gradient(ellipse 900px 520px at -8% -10%, var(--fog-blue) 0%, var(--fog-blue-soft) 50%, transparent 65%),
+    /* canto inferior direito, mesma lógica espelhada */
+    radial-gradient(ellipse 900px 520px at 108% 110%, var(--fog-blue) 0%, var(--fog-blue-soft) 60%, transparent 85%);
+}
+
+
 
 /* Brilho dourado radial discreto no canto superior direito */
 .hero::after {
@@ -187,7 +214,7 @@ h1 em {
 }
 
 .btn {
-  display: inline-flex; /* já é inline-flex, então respeita o text-align: center do pai */
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   padding: 16px 32px;
@@ -200,13 +227,29 @@ h1 em {
   border-radius: 30px;
   box-shadow: 0 10px 25px -5px rgba(201,162,75,0.4);
   transition: all .3s ease;
+  animation: btnPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px -5px rgba(201,162,75,0.4);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    box-shadow: 0 14px 34px -4px rgba(201,162,75,0.7);
+    transform: translateY(-3px) scale(1.02);
+  }
 }
 
 .btn:hover {
+  animation-play-state: paused; 
   transform: translateY(-2px);
   box-shadow: 0 14px 30px -5px rgba(201,162,75,0.55);
 }
 
+.btn:active {
+  transform: scale(0.95);
+}
 .btn i {
   font-size: 16px;
 }
@@ -228,6 +271,21 @@ h1 em {
   /*border-top: 1px solid rgba(255, 255, 255, 0.08); /* Linha divisória fina */
 }
 
+.diferenciais::before {
+  content: '';
+  position: absolute;
+  inset: -40px -20px auto -20px;
+  height: 180px;
+  z-index: 0;
+  pointer-events: none;
+ /* background: radial-gradient(ellipse 700px 260px at 50% 100%, var(--fog-blue-soft) 0%, transparent 85%); */
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+}
+
 .item {
   display: flex;
   flex-direction: column; 
@@ -236,6 +294,21 @@ h1 em {
   gap: 12px; 
   flex: 1;
   max-width: 220px;
+  animation: itemFloat 3.6s ease-in-out infinite;
+}
+
+.item:nth-child(1) { animation-delay: 0s; }
+.item:nth-child(2) { animation-delay: 0.3s; }
+.item:nth-child(3) { animation-delay: 0.6s; }
+.item:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes itemFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+ }
 }
 
 .item img {
@@ -276,7 +349,6 @@ h1 em {
     padding: 0 24px;
   }
 
-  /* --- FIX: hambúrguer e menu lateral, que tinham sumido --- */
   .burger {
     display: flex;
     z-index: 120;
@@ -311,38 +383,34 @@ h1 em {
     background-image:
       linear-gradient(to top, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.55) 35%, rgba(10,10,11,0.15) 65%, rgba(10,10,11,0.35) 100%),
       linear-gradient(to right, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0.2) 60%, transparent 100%),
-      url('assets/background_1.png');
+      url('assets/background_2.png');
     background-size: cover;
-    background-position: 30% center;
+    background-position: center center;
   }
 
   .hero .wrap {
-    margin: auto auto 40px auto;
+    margin: auto;
     width: 100%;
+    text-align: center;
   }
 
-  h1 {
-  font-size: clamp(20px, 6.5vw, 30px) !important;
+h1 {
+  font-size: clamp(40px, 7vw, 50px) !important;
   line-height: 1.2;
   margin-bottom: clamp(12px, 3vw, 16px);
-  margin-top: 20vh;   /* <<< sobe o título */
-  margin-left: 6vw;    /* <<< empurra pro centro */
 }
 
 .hero p.lead {
-  font-size: clamp(13px, 3.4vw, 15px);
+  font-size: clamp(14px, 3.6vw, 16px);
   line-height: 1.5;
-  margin-bottom: clamp(18px, 4vw, 24px);
+  margin: 1vh auto clamp(18px, 4vw, 24px);
   max-width: 100%;
-  margin-top: 1vh;   /* mesmo valor do h1 pra manter o bloco junto */
-  margin-left: 6vw;
 }
 
 .btn {
-  padding: clamp(11px, 2.7vw, 14px) clamp(22px, 5.5vw, 28px);
-  font-size: clamp(11px, 2.6vw, 12px);
-  margin-top: -20vh;
-  margin-left: 6vw;
+  padding: clamp(12px, 2.9vw, 15px) clamp(24px, 5.8vw, 30px);
+  font-size: clamp(12px, 2.8vw, 13px);
+  margin: 0 auto;
 }
 
   .diferenciais {
@@ -361,21 +429,161 @@ h1 em {
   }
 
   .item img {
-    height: clamp(24px, 6.2vw, 38px); /* era 20-34px */
+    height: clamp(24px, 6.2vw, 38px);
     width: auto;
   }
 
   .item h3 {
-    font-size: clamp(9px, 2.4vw, 12px); /* era 8-11px */
+    font-size: clamp(9px, 2.4vw, 12px);
     letter-spacing: 0.3px;
     white-space: nowrap;
   }
 
   .item p {
-    font-size: clamp(8px, 2.1vw, 10.5px); /* era 7-9.5px */
+    font-size: clamp(8px, 2.1vw, 10.5px);
     letter-spacing: 0px;
     line-height: 1.2;
   }
 }
 
+/* Tablet pequeno / celular grande */
+@media (max-width: 600px) {
+  .hero .wrap {
+    margin: auto;
+  }
+
+  h1 {
+    font-size: clamp(32px, 7.5vw, 36px) !important;
+  }
+
+  .hero p.lead {
+    font-size: clamp(13px, 3.8vw, 15px);
+  }
+
+  .btn {
+    padding: clamp(11px, 3vw, 14px) clamp(20px, 6vw, 26px);
+    font-size: clamp(11px, 2.9vw, 12.5px);
+  }
+
+  .diferenciais {
+    gap: clamp(3px, 1.2vw, 8px);
+    padding: clamp(12px, 3.5vw, 18px) clamp(6px, 2.5vw, 12px);
+  }
+
+  .item h3 {
+    font-size: clamp(8.5px, 2.6vw, 11px);
+  }
+
+  .item p {
+    font-size: clamp(7.5px, 2.3vw, 9.5px);
+  }
+}
+
+/* Celular padrão (a maioria: 360-400px) */
+@media (max-width: 480px) {
+  .hero .wrap {
+    margin: auto;
+  }
+
+  h1 {
+    font-size: clamp(27px, 8vw, 33px) !important;
+    line-height: 1.15;
+    margin-bottom: clamp(8px, 2vw, 12px);
+  }
+
+  .hero p.lead {
+    font-size: clamp(12.5px, 4vw, 14px);
+    margin-top: 0.5vh;
+    margin-bottom: clamp(12px, 3vw, 16px);
+  }
+
+  .btn {
+    padding: clamp(10px, 3.2vw, 13px) clamp(18px, 6.5vw, 24px);
+    font-size: clamp(10.5px, 3vw, 12px);
+  }
+
+  .diferenciais {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(4px, 2vw, 8px);
+    padding: clamp(10px, 3vw, 16px) clamp(4px, 2vw, 10px);
+  }
+
+  .item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .item img {
+    height: clamp(22px, 5.5vw, 30px);
+  }
+
+  .item h3 {
+    font-size: clamp(8px, 2.2vw, 10px);
+    white-space: nowrap;
+  }
+
+  .item p {
+    font-size: clamp(7px, 1.9vw, 9px);
+    line-height: 1.15;
+  }
+}
+
+/* Celular pequeno (200-400px é o foco principal) */
+@media (max-width: 380px) {
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .hero .wrap {
+    margin: auto;
+  }
+
+  h1 {
+    font-size: clamp(23px, 8.5vw, 27px) !important;
+    line-height: 1.1;
+    margin-bottom: clamp(6px, 2vw, 10px);
+  }
+
+  .hero p.lead {
+    font-size: clamp(11.5px, 4.2vw, 13px);
+    margin-bottom: 12px;
+  }
+
+  .btn {
+    padding: clamp(9px, 3.4vw, 12px) clamp(16px, 7vw, 20px);
+    font-size: clamp(10px, 3.2vw, 11px);
+  }
+
+  .diferenciais {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: clamp(2px, 1.5vw, 6px);
+    padding: clamp(8px, 2.5vw, 12px) clamp(2px, 1.5vw, 6px);
+  }
+
+  .item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .item img {
+    height: clamp(18px, 5vw, 24px);
+  }
+
+  .item h3 {
+    font-size: clamp(7px, 2vw, 8.5px);
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  .item p {
+    display: none;
+  }
+}
 
