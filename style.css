@@ -1,585 +1,907 @@
 /* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (RESET & ROOT)
+   1. RESET & CONFIGURAÇÕES GERAIS
    ========================================================================== */
-:root {
-  --black: #0a0a0b;
-  --black-2: #141412;
-  --black-3: #1c1a16;
-  --gold: #c9a24b;
-  --gold-bright: #e9c877;
-  --gold-dim: #8a733f;
-  --cream: #ece4d3;
-  --cream-dim: #b8ae9a;
-  --line: #332e24;
-  --serif: 'Cormorant Garamond', serif;
-  --sans: 'Jost', sans-serif;
-  --fog-blue: rgba(22, 48, 100, 0.55);
-  --fog-blue-soft: rgba(22, 48, 100, 0.28); 
-
- /* --fog-blue: rgba(14, 32, 74, 0.55);
---fog-blue-soft: rgba(14, 32, 74, 0.28); */
-
- /*--fog-blue: rgba(24, 28, 68, 0.55);
---fog-blue-soft: rgba(24, 28, 68, 0.28); */
-
-/*--fog-blue: rgba(18, 40, 60, 0.55);
---fog-blue-soft: rgba(18, 40, 60, 0.28); */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html{
+    scroll-behavior: smooth;
 }
 
-html {
-  scroll-behavior: smooth;
+body{
+    overflow-x: hidden;
+    background: #080808;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
 }
 
-body {
-  background: var(--black);
-  color: var(--cream);
-  font-family: var(--sans);
-  font-weight: 300;
-  overflow-x: hidden;
+a{
+    text-decoration: none;
+    color: inherit;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+img{
+    display: block;
+    max-width: 100%;
 }
 
-.wrap {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-img {
-  max-width: 100%;
-  display: block;
+.container{
+    width: min(1180px, 92%);
+    margin: auto;
 }
 
 /* ==========================================================================
-   2. HEADER (MENU SUPERIOR)
+   2. CORES & VARIÁVEIS
    ========================================================================== */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 22px 0;
-  transition: all .3s ease;
-}
-
-header.scrolled {
-  background: rgba(10,10,11,0.92);
-  backdrop-filter: blur(10px);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-header .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo-mark {
-  height: 54px;
-  cursor: pointer;
-}
-
-nav {
-  display: flex;
-  gap: 38px;
-  align-items: center;
-}
-
-nav a {
-  font-size: 12px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--cream-dim);
-}
-
-nav a:hover {
-  color: var(--gold-bright);
-}
-
-.nav-cta {
-  border: 1px solid var(--gold);
-  padding: 10px 22px;
-  color: var(--gold-bright) !important;
-}
-
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.burger span {
-  width: 24px;
-  height: 3px;
-  background: var(--gold);
+:root{
+    --gold: #cba55b;
+    --gold-light: #e4c98d;
+    --white: #ffffff;
+    --text: #ece6d8;
+    --dark: #070707;
+    --blue: rgba(16,38,92,.58);
 }
 
 /* ==========================================================================
-   3. HERO (SEÇÃO PRINCIPAL COM NEVOEIRO PRETO)
+   3. HEADER
    ========================================================================== */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 120px;
-  padding-bottom: 30px;
-
-  background-image:
-    linear-gradient(to top, rgba(10, 10, 11, 1) 0%, rgba(10, 10, 11, 0.85) 20%, rgba(10, 10, 11, 0.2) 60%, rgba(10, 10, 11, 0.5) 100%),
-    linear-gradient(to right, rgba(10, 10, 11, 0.8) 0%, rgba(10, 10, 11, 0.4) 50%, transparent 100%),
-    url('assets/background_2.png');
-  
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  min-height: 500px; /* substitui o 100vh — ajuste esse número até achar a altura ideal */
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    /* canto superior esquerdo, "escorrendo" em diagonal */
-    radial-gradient(ellipse 900px 520px at -8% -10%, var(--fog-blue) 0%, var(--fog-blue-soft) 25%, transparent 65%),
-    /* canto inferior direito, mesma lógica espelhada */
-    radial-gradient(ellipse 900px 520px at 108% 110%, var(--fog-blue) 0%, var(--fog-blue-soft) 30%, transparent 85%);
-}
-
-
-
-/* Brilho dourado radial discreto no canto superior direito */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(201,162,75,0.12), transparent 50%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero .wrap {
-  text-align: center; /* centraliza todo o conteúdo do hero */
-}
-
-h1 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(38px, 5.5vw, 68px);
-  line-height: 1.1;
-  color: #f7f2e6;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: 15vh;
-}
-
-h1 em {
-  font-style: italic;
-  color: var(--gold-bright);
-  font-weight: 500;
-}
-
-.hero p.lead {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--cream);
-  max-width: 850px;
-  margin-bottom: 35px;
-  margin-left: auto;
-  margin-right: auto; /* centraliza o bloco de texto */
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-  color: #191307;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  border-radius: 30px;
-  box-shadow: 0 10px 25px -5px rgba(201,162,75,0.4);
-  transition: all .3s ease;
-  animation: btnPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes btnPulse {
-  0%, 100% {
-    box-shadow: 0 10px 25px -5px rgba(201,162,75,0.4);
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    box-shadow: 0 14px 34px -4px rgba(201,162,75,0.7);
-    transform: translateY(-3px) scale(1.02);
-  }
-}
-
-.btn:hover {
-  animation-play-state: paused; 
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px -5px rgba(201,162,75,0.55);
-}
-
-.btn:active {
-  transform: scale(0.95);
-}
-.btn i {
-  font-size: 16px;
-}
-
-/* ==========================================================================
-   4. DIFERENCIAIS (ÍCONE NO TOPO, TEXTOS ABAIXO)
-   ========================================================================== */
-.diferenciais {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 25px 32px 10px 32px;
-  margin-top: 200px;
-  /*border-top: 1px solid rgba(255, 255, 255, 0.08); /* Linha divisória fina */
-}
-
-.diferenciais::before {
-  content: '';
-  position: absolute;
-  inset: -40px -20px auto -20px;
-  height: 180px;
-  z-index: 0;
-  pointer-events: none;
- /* background: radial-gradient(ellipse 700px 260px at 50% 100%, var(--fog-blue-soft) 0%, transparent 85%); */
-}
-
-.item {
-  position: relative;
-  z-index: 1;
-}
-
-.item {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  text-align: center;
-  gap: 12px; 
-  flex: 1;
-  max-width: 220px;
-  animation: itemFloat 3.6s ease-in-out infinite;
-}
-
-.item:nth-child(1) { animation-delay: 0s; }
-.item:nth-child(2) { animation-delay: 0.3s; }
-.item:nth-child(3) { animation-delay: 0.6s; }
-.item:nth-child(4) { animation-delay: 0.9s; }
-
-@keyframes itemFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
- }
-}
-
-.item img {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-}
-
-.item .textos {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.item h3 {
-  font-size: 12px;
-  font-family: var(--serif);
-  font-weight: 600;
-  color: var(--gold-bright);
-  margin: 0;
-  letter-spacing: 1.5px;
-}
-
-.item p {
-  font-size: 11px;
-  font-family: var(--serif);
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: 0.5px;
-  font-weight: 400;
-}
-
-/* ==========================================================================
-   5. RESPONSIVIDADE (QUERY ÚNICA E FLUIDA)
-   ========================================================================== */
-@media(max-width: 980px) {
-  .wrap {
-    padding: 0 24px;
-  }
-
-  .burger {
-    display: flex;
-    z-index: 120;
-  }
-
-  nav {
+header{
     position: fixed;
     top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 74%;
-    background: #0d0c0a;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    transition: right .4s ease;
-    border-left: 1px solid var(--line);
-    z-index: 110;
-  }
-  nav.open {
-    right: 0;
-  }
-
-  .hero {
-    min-height: 100vh;
-    padding-top: clamp(70px, 18vw, 100px);
-    padding-bottom: clamp(20px, 5vw, 30px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    background-image:
-      linear-gradient(to top, rgba(10,10,11,0.95) 0%, rgba(10,10,11,0.55) 35%, rgba(10,10,11,0.15) 65%, rgba(10,10,11,0.35) 100%),
-      linear-gradient(to right, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0.2) 60%, transparent 100%),
-      url('assets/background_2.png');
-    background-size: cover;
-    background-position: center center;
-  }
-
-  .hero .wrap {
-    margin: auto;
+    left: 0;
     width: 100%;
-    text-align: center;
-  }
-
-h1 {
-  font-size: clamp(40px, 7vw, 50px) !important;
-  line-height: 1.2;
-  margin-bottom: clamp(12px, 3vw, 16px);
+    z-index: 999;
+    transition: .4s ease;
 }
 
-.hero p.lead {
-  font-size: clamp(14px, 3.6vw, 16px);
-  line-height: 1.5;
-  margin: 1vh auto clamp(18px, 4vw, 24px);
-  max-width: 100%;
+header.scrolled{
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.05);
 }
 
-.btn {
-  padding: clamp(12px, 2.9vw, 15px) clamp(24px, 5.8vw, 30px);
-  font-size: clamp(12px, 2.8vw, 13px);
-  margin: 0 auto;
-}
-
-  .diferenciais {
+header .container{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: clamp(4px, 1.5vw, 10px);
-    padding: clamp(15px, 4vw, 20px) clamp(8px, 3vw, 16px) clamp(15px, 4vw, 20px);
-  }
-
-  .item {
-    flex: 1;
-    min-width: 0;
-    gap: clamp(6px, 2vw, 10px);
-  }
-
-  .item img {
-    height: clamp(24px, 6.2vw, 38px);
-    width: auto;
-  }
-
-  .item h3 {
-    font-size: clamp(9px, 2.4vw, 12px);
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-
-  .item p {
-    font-size: clamp(8px, 2.1vw, 10.5px);
-    letter-spacing: 0px;
-    line-height: 1.2;
-  }
+    align-items: center;
+    height: 90px;
 }
 
-/* Tablet pequeno / celular grande */
-@media (max-width: 600px) {
-  .hero .wrap {
-    margin: auto;
-  }
-
-  h1 {
-    font-size: clamp(32px, 7.5vw, 36px) !important;
-  }
-
-  .hero p.lead {
-    font-size: clamp(13px, 3.8vw, 15px);
-  }
-
-  .btn {
-    padding: clamp(11px, 3vw, 14px) clamp(20px, 6vw, 26px);
-    font-size: clamp(11px, 2.9vw, 12.5px);
-  }
-
-  .diferenciais {
-    gap: clamp(3px, 1.2vw, 8px);
-    padding: clamp(12px, 3.5vw, 18px) clamp(6px, 2.5vw, 12px);
-  }
-
-  .item h3 {
-    font-size: clamp(8.5px, 2.6vw, 11px);
-  }
-
-  .item p {
-    font-size: clamp(7.5px, 2.3vw, 9.5px);
-  }
+.logo img{
+    height: 58px;
 }
 
-/* Celular padrão (a maioria: 360-400px) */
-@media (max-width: 480px) {
-  .hero .wrap {
-    margin: auto;
-  }
-
-  h1 {
-    font-size: clamp(27px, 8vw, 33px) !important;
-    line-height: 1.15;
-    margin-bottom: clamp(8px, 2vw, 12px);
-  }
-
-  .hero p.lead {
-    font-size: clamp(12.5px, 4vw, 14px);
-    margin-top: 0.5vh;
-    margin-bottom: clamp(12px, 3vw, 16px);
-  }
-
-  .btn {
-    padding: clamp(10px, 3.2vw, 13px) clamp(18px, 6.5vw, 24px);
-    font-size: clamp(10.5px, 3vw, 12px);
-  }
-
-  .diferenciais {
+nav{
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: clamp(4px, 2vw, 8px);
-    padding: clamp(10px, 3vw, 16px) clamp(4px, 2vw, 10px);
-  }
-
-  .item {
-    flex: 1 1 0;
-    min-width: 0;
-  }
-
-  .item img {
-    height: clamp(22px, 5.5vw, 30px);
-  }
-
-  .item h3 {
-    font-size: clamp(8px, 2.2vw, 10px);
-    white-space: nowrap;
-  }
-
-  .item p {
-    font-size: clamp(7px, 1.9vw, 9px);
-    line-height: 1.15;
-  }
+    gap: 42px;
+    align-items: center;
 }
 
-/* Celular pequeno (200-400px é o foco principal) */
-@media (max-width: 380px) {
-  .wrap {
-    padding: 0 16px;
-  }
+nav a{
+    color: #dad2c3;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .3s ease;
+}
 
-  .hero .wrap {
-    margin: auto;
-  }
+nav a:hover{
+    color: var(--gold-light);
+}
 
-  h1 {
-    font-size: clamp(23px, 8.5vw, 27px) !important;
-    line-height: 1.1;
-    margin-bottom: clamp(6px, 2vw, 10px);
-  }
+.btn-menu{
+    border: 1px solid var(--gold);
+    padding: 12px 26px;
+    border-radius: 50px;
+}
 
-  .hero p.lead {
-    font-size: clamp(11.5px, 4.2vw, 13px);
-    margin-bottom: 12px;
-  }
-
-  .btn {
-    padding: clamp(9px, 3.4vw, 12px) clamp(16px, 7vw, 20px);
-    font-size: clamp(10px, 3.2vw, 11px);
-  }
-
-  .diferenciais {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: clamp(2px, 1.5vw, 6px);
-    padding: clamp(8px, 2.5vw, 12px) clamp(2px, 1.5vw, 6px);
-    
-  }
-
-  .item {
-    flex: 1 1 0;
-    min-width: 0;
-  }
-
-  .item img {
-    height: clamp(18px, 5vw, 24px);
-  }
-
-  .item h3 {
-    font-size: clamp(7px, 2vw, 8.5px);
-    white-space: normal;
-    line-height: 1.15;
-  }
-
-  .item p {
+#burger{
     display: none;
-  }
 }
 
+/* ==========================================================================
+   4. HERO (ESTRUTURA & FUNDOS)
+   ========================================================================== */
+.hero{
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-image: url("assets/FOTO PRINCIPAL.png");
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-bottom: 140px; 
+}
+
+/* Escurecimento degradê */
+.hero-overlay{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.30),
+            rgba(0,0,0,.75)
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.35),
+            transparent
+        );
+}
+
+/* Neblina Azul */
+.hero-blue{
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 900px 650px at -10% -5%,
+            rgba(20,45,100,.70),
+            rgba(20,45,100,.25) 35%,
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 900px 700px at 50% 110%,
+            rgba(22,45,90,.55),
+            transparent 72%
+        );
+}
+
+/* Ruído/Noise sutil */
+.hero-noise{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    opacity: .18;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,.04) 1px, transparent 1px),
+        radial-gradient(circle at 60% 20%, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 160px 160px, 220px 220px, 280px 280px;
+}
+
+/* Brilho dourado no canto superior */
+.hero-gold{
+    position: absolute;
+    top: -240px;
+    right: -180px;
+    width: 720px;
+    height: 720px;
+    border-radius: 50%;
+    z-index: 4;
+    background:
+        radial-gradient(
+            circle,
+            rgba(220,180,90,.22),
+            rgba(220,180,90,.08),
+            transparent 70%
+        );
+    filter: blur(45px);
+}
+
+/* Sombra Inferior de Transição */
+.hero::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 260px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(5,5,5,.25) 20%,
+        rgba(5,5,5,.70) 60%,
+        #070707 100%
+    );
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ==========================================================================
+   5. HERO CONTENT & BOTAO WHATSAPP (DESKTOP)
+   ========================================================================== */
+.hero-container{
+    position: relative;
+    z-index: 20;
+}
+
+.hero-content{
+    width: 500px; /* Deixa o conteúdo elegante e estreito */
+    padding-top: 120px;
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.35),
+        0 10px 30px rgba(0,0,0,.45);
+}
+
+.subtitle{
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.hero h1{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 460px;
+}
+
+.hero h1 em{
+    color: var(--gold);
+    font-style: italic;
+}
+
+.hero p{
+    color: #ddd4c6;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 440px; 
+    margin-bottom: 30px;
+}
+
+/* Direto de Fábrica */
+.factory{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    max-width: 250px;
+}
+
+.factory-line{
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        var(--gold),
+        transparent
+    );
+}
+
+.factory span{
+    color: var(--gold-light);
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* Estatísticas */
+.numbers{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 40px; /* Dá espaço para o botão abaixo dela */
+}
+
+.number{
+    position: relative;
+    flex: 1 1 120px;
+    min-width: 110px;
+}
+
+.number h2{
+    font-family: "Cormorant Garamond", serif;
+    font-size: 46px;
+    font-weight: 500;
+    color: var(--gold-light);
+   line-height: 1;
+    margin-bottom: 10px;
+}
+
+.number p{
+    font-size: 14px;
+    color: #ddd;
+    lnei-height: 1.4;
+    max-width: 140px;
+}
+
+/* Botão Especialista WhatsApp (Desktop - Penúltimo elemento) */
+.hero-action {
+    margin-top: 20px;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--dark) !important;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(203, 165, 91, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 10;
+    animation: pulseBtn 2.5s infinite;
+}
+
+.btn-whatsapp i {
+    font-size: 20px;
+}
+
+/* Efeito Shimmer (Brilho correndo pelo botão) */
+.btn-whatsapp::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-30deg);
+    transition: 0.8s;
+    animation: shimmer 4s infinite ease-in-out;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(203, 165, 91, 0.5);
+}
+
+/* ==========================================================================
+   6. RODAPÉ DO HERO & DIFERENCIAIS (DESKTOP)
+   ========================================================================== */
+.hero-footer{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    padding-bottom: 35px;
+}
+
+/* Linha Divisória Superior */
+.hero-footer::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+    width: 100%;
+    max-width: 1180px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(203,165,91,.55),
+        transparent
+    );
+}
+
+.diferenciais{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.item{
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.item img{
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(203,165,91,.15));
+}
+
+.textos{
+    display: flex;
+    flex-direction: column;
+}
+
+.textos h3{
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--gold-light);
+    margin-bottom: 3px;
+    white-space: nowrap;
+}
+
+.textos p{
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #e8e3d6;
+}
+
+/* Brilho hover nos diferenciais */
+.item::before{
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(203,165,91,.10),
+        transparent 70%
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: .4s ease;
+}
+
+.item:hover::before{
+    opacity: 1;
+}
+
+/* Transições Globais */
+header, nav a, .item, .item::before {
+    transition: .35s ease-in-out;
+}
+
+/* ==========================================================================
+   7. ANIMAÇÕES
+   ========================================================================== */
+@keyframes float{
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.item:nth-child(1){ animation: float 4s ease-in-out infinite; }
+.item:nth-child(2){ animation: float 4s ease-in-out infinite .3s; }
+.item:nth-child(3){ animation: float 4s ease-in-out infinite .6s; }
+.item:nth-child(4){ animation: float 4s ease-in-out infinite .9s; }
+
+@keyframes pulseBtn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { left: -150%; }
+    30% { left: 150%; }
+    100% { left: 150%; }
+}
+
+
+/* ==========================================================================
+   8. RESPONSIVIDADE (TABLET - MAX 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+    .hero h1 {
+        font-size: 56px;
+    }
+    .diferenciais {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .hero {
+        padding-bottom: 220px;
+    }
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE - MAX 768px)
+   ========================================================================== */
+/* ==========================================================================
+   8. RESPONSIVIDADE (TABLET - MAX 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+    .hero h1 {
+        font-size: 56px;
+    }
+    .diferenciais {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .hero {
+        padding-bottom: 220px;
+    }
+}
+
+/* ==========================================================================
+   8. RESPONSIVIDADE (TABLET - MAX 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+    .hero h1 {
+        font-size: 56px;
+    }
+    .diferenciais {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .hero {
+        padding-bottom: 220px;
+    }
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE PADRÃO - MAX 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        position: absolute;
+        background: transparent !important;
+        border: none !important;
+        backdrop-filter: none !important;
+    }
+
+    header .container {
+        height: 70px;
+        padding: 0 4%;
+    }
+
+    .logo img {
+        height: 38px;
+    }
+
+    nav {
+        display: none; 
+    }
+
+    #burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 15px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    #burger span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--gold-light);
+    }
+
+    /* Ajuste do layout geral do Hero */
+    .hero {
+        background-size: cover;
+        background-position: center top; 
+        min-height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 100px;     
+        padding-bottom: 35px;   
+    }
+
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.2) 40%,
+            rgba(0, 0, 0, 0.85) 100%
+        );
+    }
+    
+    .hero-blue {
+        opacity: 0.4;
+    }
+
+    .hero-container {
+        width: 92%;
+        margin: 0 auto;
+        flex: 1;               
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Título maior para preencher espaço e dar imponência */
+    .hero h1 {
+        font-size: 32px; 
+        line-height: 1.15;
+        margin-top: 0;
+        margin-bottom: 12px;
+        max-width: 290px; 
+    }
+
+    .hero p {
+        font-size: 13.5px; 
+        line-height: 1.45;
+        margin-bottom: 20px; 
+        color: #e5dec9;
+        max-width: 270px; 
+    }
+
+    .factory {
+        margin-top: 5px;
+        margin-bottom: 15px; /* Reduzido para aproximar os números */
+        gap: 8px;
+        max-width: 200px; 
+    }
+
+    .factory-line {
+        width: 30px;
+    }
+
+    .factory span {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+
+    /* ==========================================================================
+       NÚMEROS BEM JUNTOS E PUXADOS PARA CIMA
+       ========================================================================== */
+    .numbers {
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: nowrap;          
+        justify-content: flex-start; /* Alinha eles no começo, colados */
+        align-items: flex-start;
+        gap: 15px;                   /* Distância reduzida entre cada bloco */
+        margin-top: -5px;            /* Margem negativa joga os números mais para CIMA */
+        margin-bottom: 18px;         /* Reduzido para o botão do WhatsApp subir junto */
+        width: 100%;
+        max-width: 260px;            /* Limita a largura do conjunto para ficarem compactos */
+    }
+
+    .number {
+        flex: 0 1 auto;              /* Impede que eles se estiquem e se afastem */
+        min-width: 0;               
+        border-right: none !important; 
+        padding-right: 0 !important;   
+        text-align: left;
+    }
+
+    .number h2 {
+        font-size: 15px;             /* Tamanho bem ajustado */
+        margin-bottom: 1px;
+        white-space: nowrap;        
+    }
+
+    .number p {
+        font-size: 8px;             
+        letter-spacing: 0px;
+        line-height: 1.2;
+        color: #bfae95;
+    }
+
+    /* Botão do WhatsApp subindo mais na tela */
+    .hero-action {
+        margin-top: 5px;
+        margin-bottom: 12px;        /* Menos espaço abaixo para equilibrar o rodapé */
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .btn-whatsapp {
+        padding: 14px 28px; 
+        font-size: 11.5px;
+        gap: 8px;
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    .btn-whatsapp i {
+        font-size: 16px;
+    }
+
+    /* ==========================================================================
+       DIFERENCIAIS (RODAPÉ) - IMPECÁVEIS
+       ========================================================================== */
+    .hero-footer {
+        position: relative;
+        padding-top: 20px;      
+        padding-bottom: 5px;
+        background: transparent; 
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .hero-footer::before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 5%;
+        width: 90%;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(203, 165, 91, 0.25),
+            transparent
+        );
+    }
+
+    .hero-footer .container {
+        width: 100%;       
+        max-width: 100%;
+        padding: 0 12px;   
+    }
+
+    .diferenciais {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px; 
+    }
+
+    .item {
+        flex: 1;
+        min-width: 0; 
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+        gap: 8px; 
+    }
+
+    .item img {
+        width: 34px; 
+        height: 34px;
+        filter: drop-shadow(0 2px 8px rgba(203,165,91,0.2));
+    }
+
+    .textos {
+        align-items: center;
+        width: 100%;
+    }
+
+    .textos h3 {
+        font-size: 9.5px; 
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--gold-light);
+        line-height: 1.2;
+        margin-bottom: 3px;
+        white-space: normal; 
+    }
+
+    .textos p {
+        display: block; 
+        font-size: 7.5px;
+        line-height: 1.2;
+        letter-spacing: 0.3px;
+        color: #e8e3d6;
+        opacity: 0.85;
+    }
+}
+
+/* ==========================================================================
+   10. AJUSTE FINO PARA CELULARES MÉDIOS (Ex: iPhone 12/13/14 - MAX 412px)
+   ========================================================================== */
+@media (max-width: 412px) {
+    .hero {
+        padding-top: 95px;
+        padding-bottom: 25px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+        max-width: 260px;
+    }
+
+    .hero p {
+        font-size: 12.5px;
+    }
+
+    /* Números super integrados, coladinhos e altos no iPhone 12 */
+    .numbers {
+        gap: 10px;               /* Diminuído o espaço entre os números */
+        margin-top: -8px;        /* Sobe ainda mais o bloco de números */
+        margin-bottom: 15px;
+        max-width: 230px;        /* Deixa o bloco de números mais estreito lateralmente */
+    }
+
+    .number h2 {
+        font-size: 13.5px;
+    }
+
+    .number p {
+        font-size: 7.5px;
+    }
+
+    .btn-whatsapp {
+        padding: 13px 24px;
+        font-size: 11px;
+    }
+
+    .item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .textos h3 {
+        font-size: 8.5px;
+    }
+
+    .textos p {
+        font-size: 7px;
+    }
+}
+
+/* ==========================================================================
+   11. AJUSTE FINO PARA CELULARES ULTRA COMPACTOS (MAX 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+    .hero h1 {
+        font-size: 24px;
+        max-width: 220px;
+    }
+
+    .numbers {
+        gap: 8px;
+        margin-top: -10px;
+        max-width: 210px;
+    }
+
+    .number h2 {
+        font-size: 12px;
+    }
+
+    .number p {
+        font-size: 7px;
+    }
+
+    .btn-whatsapp {
+        padding: 12px 20px;
+        font-size: 10px;
+    }
+
+    .item img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .textos h3 {
+        font-size: 7.5px;
+    }
+
+    .textos p {
+        font-size: 6.5px;
+    }
+}
