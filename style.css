@@ -1,497 +1,505 @@
 /* ==========================================================================
    1. RESET & CONFIGURAÇÕES GERAIS
    ========================================================================== */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
-    overflow-x: hidden;
-    background: #080808;
-    color: #fff;
-    font-family: 'Jost', sans-serif;
+body {
+  overflow-x: hidden;
+  background: #080808;
+  color: #fff;
+  font-family: 'Jost', sans-serif;
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-img{
-    display: block;
-    max-width: 100%;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-.container{
-    width: min(1180px, 92%);
-    margin: auto;
+.container {
+  width: min(1180px, 92%);
+  margin: auto;
 }
 
 /* ==========================================================================
    2. CORES & VARIÁVEIS
    ========================================================================== */
-:root{
-    --gold: #cba55b;
-    --gold-light: #e4c98d;
-    --white: #ffffff;
-    --text: #ece6d8;
-    --dark: #070707;
-    --blue: rgba(16,38,92,.58);
+:root {
+  --gold: #cba55b;
+  --gold-light: #e4c98d;
+  --white: #ffffff;
+  --text: #ece6d8;
+  --dark: #070707;
+  --blue: rgba(16, 38, 92, .58);
 }
 
 /* ==========================================================================
    3. HEADER
    ========================================================================== */
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    transition: .4s ease;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: .4s ease;
 }
 
-header.scrolled{
-    background: rgba(5,5,5,.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,.05);
+header.scrolled {
+  background: rgba(5, 5, 5, .88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, .05);
 }
 
-header .container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
-.logo img{
-    height: 58px;
+.logo img {
+  height: 58px;
 }
 
-nav{
-    display: flex;
-    gap: 42px;
-    align-items: center;
+nav {
+  display: flex;
+  gap: 42px;
+  align-items: center;
 }
 
-nav a{
-    color: #dad2c3;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: .3s ease;
+nav a {
+  color: #dad2c3;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .3s ease;
 }
 
-nav a:hover{
-    color: var(--gold-light);
+nav a:hover {
+  color: var(--gold-light);
 }
 
-.btn-menu{
-    border: 1px solid var(--gold);
-    padding: 12px 26px;
-    border-radius: 50px;
+.btn-menu {
+  border: 1px solid var(--gold);
+  padding: 12px 26px;
+  border-radius: 50px;
 }
 
-#burger{
-    display: none;
+#burger {
+  display: none;
 }
 
 /* ==========================================================================
    4. HERO (ESTRUTURA & FUNDOS)
    ========================================================================== */
-.hero{
-    position: relative;
-    isolation: isolate;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    background-image: url("assets/FOTO PRINCIPAL.png");
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
-    padding-bottom: 140px; 
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-image: url("assets/FOTO PRINCIPAL.png");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-bottom: 140px;
 }
 
 /* Escurecimento degradê */
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none; /* Garante que não atrapalha cliques nos links do menu */
-    
-    /* MÚLTIPLOS GRADIENTES EXPANDIDOS (COBRINDO LOGO E MENU) */
-    background: 
-        /* 1. Esfumaçado Azul Escuro Denso no Canto Superior Esquerdo (Logo e Menu) */
-        radial-gradient(circle at 10% 0%, rgba(8, 12, 21, 0.95) 0%, rgba(8, 12, 21, 0.6) 45%, transparent 80%),
-        
-        /* 2. Nevoeiro Azul Escuro/Preto no Rodapé */
-        radial-gradient(circle at 50% 100%, rgba(8, 12, 21, 0.95) 0%, rgba(8, 12, 21, 0.7) 40%, transparent 85%),
-        
-        /* 3. Degradê Linear para integrar o topo e o fundo */
-        linear-gradient(180deg, rgba(8, 12, 21, 0.5) 0%, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  /* Garante que não atrapalha cliques nos links do menu */
+
+  /* MÚLTIPLOS GRADIENTES EXPANDIDOS (COBRINDO LOGO E MENU) */
+  background:
+    /* 1. Esfumaçado Azul Escuro Denso no Canto Superior Esquerdo (Logo e Menu) */
+    radial-gradient(circle at 10% 0%, rgba(8, 12, 21, 0.95) 0%, rgba(8, 12, 21, 0.6) 45%, transparent 80%),
+
+    /* 2. Nevoeiro Azul Escuro/Preto no Rodapé */
+    radial-gradient(circle at 50% 100%, rgba(8, 12, 21, 0.95) 0%, rgba(8, 12, 21, 0.7) 40%, transparent 85%),
+
+    /* 3. Degradê Linear para integrar o topo e o fundo */
+    linear-gradient(180deg, rgba(8, 12, 21, 0.5) 0%, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 /* Neblina Azul */
-.hero-blue{
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    background:
-        radial-gradient(
-            ellipse 900px 650px at -10% -5%,
-            rgba(20,45,100,.70),
-            rgba(20,45,100,.25) 35%,
-            transparent 72%
-        ),
-        radial-gradient(
-            ellipse 900px 700px at 50% 110%,
-            rgba(22,45,90,.55),
-            transparent 72%
-        );
+.hero-blue {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 650px at -10% -5%,
+      rgba(20, 45, 100, .70),
+      rgba(20, 45, 100, .25) 35%,
+      transparent 72%),
+    radial-gradient(ellipse 900px 700px at 50% 110%,
+      rgba(22, 45, 90, .55),
+      transparent 72%);
 }
 
 /* Ruído/Noise sutil */
-.hero-noise{
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 3;
-    opacity: .18;
-    background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.05) 1px, transparent 1px),
-        radial-gradient(circle at 80% 60%, rgba(255,255,255,.04) 1px, transparent 1px),
-        radial-gradient(circle at 60% 20%, rgba(255,255,255,.03) 1px, transparent 1px);
-    background-size: 160px 160px, 220px 220px, 280px 280px;
-}
-
-/* Brilho dourado no canto superior */
-.hero-gold{
-    position: absolute;
-    top: -240px;
-    right: -180px;
-    width: 720px;
-    height: 720px;
-    border-radius: 50%;
-    z-index: 4;
-    background:
-        radial-gradient(
-            circle,
-            rgba(220,180,90,.22),
-            rgba(220,180,90,.08),
-            transparent 70%
-        );
-    filter: blur(45px);
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: .18;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, .05) 1px, transparent 1px),
+    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, .04) 1px, transparent 1px),
+    radial-gradient(circle at 60% 20%, rgba(255, 255, 255, .03) 1px, transparent 1px);
+  background-size: 160px 160px, 220px 220px, 280px 280px;
 }
 
 /* Sombra Inferior de Transição */
-.hero::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 260px;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(5,5,5,.25) 20%,
-        rgba(5,5,5,.70) 60%,
-        #070707 100%
-    );
-    pointer-events: none;
-    z-index: 5;
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 260px;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(5, 5, 5, .25) 20%,
+      rgba(5, 5, 5, .70) 60%,
+      #070707 100%);
+  pointer-events: none;
+  z-index: 5;
 }
 
 /* ==========================================================================
    5. HERO CONTENT & BOTAO WHATSAPP (DESKTOP)
    ========================================================================== */
-.hero-container{
-    position: relative;
-    z-index: 20;
+.hero-container {
+  position: relative;
+  z-index: 20;
 }
 
-.hero-content{
-    width: 500px; /* Deixa o conteúdo elegante e estreito */
-    padding-top: 120px;
-    text-shadow:
-        0 2px 10px rgba(0,0,0,.35),
-        0 10px 30px rgba(0,0,0,.45);
+.hero-content {
+  width: 500px;
+  /* Deixa o conteúdo elegante e estreito */
+  padding-top: 120px;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, .35),
+    0 10px 30px rgba(0, 0, 0, .45);
 }
 
-.subtitle{
-    color: var(--gold-light);
-    letter-spacing: 4px;
-    font-size: 12px;
-    text-transform: uppercase;
+.subtitle {
+  color: var(--gold-light);
+  letter-spacing: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
-.hero h1{
-    font-family: "Cormorant Garamond", serif;
-    font-size: 64px;
-    font-weight: 400;
-    line-height: 1.1;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    max-width: 460px;
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 460px;
 }
 
-.hero h1 em{
-    color: var(--gold);
-    font-style: italic;
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
 }
 
-.hero p{
-    color: #ddd4c6;
-    font-size: 18px;
-    line-height: 1.8;
-    max-width: 440px; 
-    margin-bottom: 30px;
+.hero p {
+  color: #ddd4c6;
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 440px;
+  margin-bottom: 30px;
 }
 
 /* Direto de Fábrica */
-.factory{
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-    max-width: 250px;
+.factory {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  max-width: 250px;
 }
 
-.factory-line{
-    width: 90px;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        var(--gold),
-        transparent
-    );
+.factory-line {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(to right,
+      var(--gold),
+      transparent);
 }
 
-.factory span{
-    color: var(--gold-light);
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+.factory span {
+  color: var(--gold-light);
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 /* Estatísticas */
-.numbers{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-    margin-bottom: 40px; /* Dá espaço para o botão abaixo dela */
+.numbers {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  /* Dá espaço para o botão abaixo dela */
 }
 
-.number{
-    position: relative;
-    flex: 1 1 120px;
-    min-width: 110px;
+.number {
+  position: relative;
+  flex: 1 1 120px;
+  min-width: 110px;
 }
 
-.number h2{
-    font-family: "Cormorant Garamond", serif;
-    font-size: 46px;
-    font-weight: 500;
-    color: var(--gold-light);
-   line-height: 1;
-    margin-bottom: 10px;
+.number h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  font-weight: 500;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 10px;
 }
 
-.number p{
-    font-size: 14px;
-    color: #ddd;
-    lnei-height: 1.4;
-    max-width: 140px;
+.number p {
+  font-size: 14px;
+  color: #ddd;
+  lnei-height: 1.4;
+  max-width: 140px;
 }
 
 /* Botão Especialista WhatsApp (Desktop - Penúltimo elemento) */
 .hero-action {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-    color: var(--dark) !important;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 16px 36px;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(203, 165, 91, 0.3);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    z-index: 10;
-    animation: pulseBtn 2.5s infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--dark) !important;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(203, 165, 91, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 10;
+  animation: pulseBtn 2.5s infinite;
 }
 
 .btn-whatsapp i {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 /* Efeito Shimmer (Brilho correndo pelo botão) */
 .btn-whatsapp::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -50%;
-    width: 30%;
-    height: 100%;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transform: skewX(-30deg);
-    transition: 0.8s;
-    animation: shimmer 4s infinite ease-in-out;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+  transform: skewX(-30deg);
+  transition: 0.8s;
+  animation: shimmer 4s infinite ease-in-out;
 }
 
 .btn-whatsapp:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(203, 165, 91, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(203, 165, 91, 0.5);
 }
 
 /* ==========================================================================
    6. RODAPÉ DO HERO & DIFERENCIAIS (DESKTOP)
    ========================================================================== */
-.hero-footer{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 30;
-    padding-bottom: 35px;
+.hero-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  padding-bottom: 35px;
 }
 
 /* Linha Divisória Superior */
-.hero-footer::before{
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -20px;
-    width: 100%;
-    max-width: 1180px;
-    height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(203,165,91,.55),
-        transparent
-    );
+.hero-footer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20px;
+  width: 100%;
+  max-width: 1180px;
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(203, 165, 91, .55),
+      transparent);
 }
 
-.diferenciais{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
+.diferenciais {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.item{
-    display: flex;
-    position: relative;
-    align-items: center;
-    gap: 15px;
-    flex: 1;
-    min-width: 200px;
+.item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  min-width: 200px;
 }
 
-.item img{
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 12px rgba(203,165,91,.15));
+.item img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(203, 165, 91, .15));
 }
 
-.textos{
-    display: flex;
-    flex-direction: column;
+.textos {
+  display: flex;
+  flex-direction: column;
 }
 
-.textos h3{
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    color: var(--gold-light);
-    margin-bottom: 3px;
-    white-space: nowrap;
+.textos h3 {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  margin-bottom: 3px;
+  white-space: nowrap;
 }
 
-.textos p{
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: #e8e3d6;
+.textos p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #e8e3d6;
 }
 
 /* Brilho hover nos diferenciais */
-.item::before{
-    content: "";
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(203,165,91,.10),
-        transparent 70%
-    );
-    z-index: -1;
-    opacity: 0;
-    transition: .4s ease;
+.item::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(203, 165, 91, .10),
+      transparent 70%);
+  z-index: -1;
+  opacity: 0;
+  transition: .4s ease;
 }
 
-.item:hover::before{
-    opacity: 1;
+.item:hover::before {
+  opacity: 1;
 }
 
 /* Transições Globais */
-header, nav a, .item, .item::before {
-    transition: .35s ease-in-out;
+header,
+nav a,
+.item,
+.item::before {
+  transition: .35s ease-in-out;
 }
 
 /* ==========================================================================
    7. ANIMAÇÕES
    ========================================================================== */
-@keyframes float{
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.item:nth-child(1){ animation: float 4s ease-in-out infinite; }
-.item:nth-child(2){ animation: float 4s ease-in-out infinite .3s; }
-.item:nth-child(3){ animation: float 4s ease-in-out infinite .6s; }
-.item:nth-child(4){ animation: float 4s ease-in-out infinite .9s; }
+.item:nth-child(1) {
+  animation: float 4s ease-in-out infinite;
+}
+
+.item:nth-child(2) {
+  animation: float 4s ease-in-out infinite .3s;
+}
+
+.item:nth-child(3) {
+  animation: float 4s ease-in-out infinite .6s;
+}
+
+.item:nth-child(4) {
+  animation: float 4s ease-in-out infinite .9s;
+}
 
 @keyframes pulseBtn {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer {
-    0% { left: -150%; }
-    30% { left: 150%; }
-    100% { left: 150%; }
+  0% {
+    left: -150%;
+  }
+
+  30% {
+    left: 150%;
+  }
+
+  100% {
+    left: 150%;
+  }
 }
 
 
@@ -499,20 +507,23 @@ header, nav a, .item, .item::before {
    8. RESPONSIVIDADE (TABLET - MAX 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
-    .container {
-        width: 90%;
-    }
-    .hero h1 {
-        font-size: 56px;
-    }
-    .diferenciais {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .hero {
-        padding-bottom: 220px;
-    }
+  .container {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .diferenciais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .hero {
+    padding-bottom: 220px;
+  }
 }
 
 
@@ -523,401 +534,522 @@ header, nav a, .item, .item::before {
    8. RESPONSIVIDADE (TABLET - MAX 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
-    .container {
-        width: 90%;
-    }
-    .hero h1 {
-        font-size: 56px;
-    }
-    .diferenciais {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .hero {
-        padding-bottom: 220px;
-    }
+  .container {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .diferenciais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .hero {
+    padding-bottom: 220px;
+  }
 }
 
 /* ==========================================================================
    8. RESPONSIVIDADE (TABLET - MAX 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
-    .container {
-        width: 90%;
-    }
-    .hero h1 {
-        font-size: 56px;
-    }
-    .diferenciais {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .hero {
-        padding-bottom: 220px;
-    }
+  .container {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .diferenciais {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .hero {
+    padding-bottom: 220px;
+  }
 }
 
 /* ==========================================================================
    9. RESPONSIVIDADE (MOBILE PADRÃO - MAX 768px)
    ========================================================================== */
 @media (max-width: 768px) {
-    header {
-        position: absolute;
-        background: transparent !important;
-        border: none !important;
-        backdrop-filter: none !important;
-    }
+  header {
+    position: absolute;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+  }
 
-    header .container {
-        height: 70px;
-        padding: 0 4%;
-    }
+  header .container {
+    height: 70px;
+    padding: 0 4%;
+  }
 
-    .logo img {
-        height: 38px;
-    }
+  .logo img {
+    height: 38px;
+  }
 
-    nav {
-        display: none; 
-    }
+  nav {
+    display: none;
+  }
 
-    #burger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 24px;
-        height: 15px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-    }
+  #burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 
-    #burger span {
-        width: 100%;
-        height: 2px;
-        background-color: var(--gold-light);
-    }
+  #burger span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold-light);
+  }
 
-    /* Ajuste do layout geral do Hero */
-    .hero {
-        background-size: cover;
-        background-position: center top; 
-        min-height: 100vh; 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        /* Diminuímos o padding-top para o título colar mais perto do menu e subir todo o bloco */
-        padding-top: 75px;     
-        padding-bottom: 25px;   
-    }
+  /* Ajuste do layout geral do Hero */
+  .hero {
+    background-size: cover;
+    background-position: center top;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Diminuímos o padding-top para o título colar mais perto do menu e subir todo o bloco */
+    padding-top: 75px;
+    padding-bottom: 25px;
+  }
 
-    .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 
-        /* A mágica do contraste: escuridão extrema no teto e no rodapé, transparência no meio */
-        background: 
-            /* 1. Esfumaçado no topo: cobre metade do teto, a logo e o menu hamburguer */
-            radial-gradient(circle at 50% 0%, rgba(8, 12, 21, 0.98) 0%, rgba(8, 12, 21, 0.85) 30%, transparent 60%),
-            
-            /* 2. Esfumaçado no rodapé: protege os ícones e deixa a base elegante */
-            radial-gradient(circle at 50% 100%, rgba(8, 12, 21, 0.98) 0%, rgba(8, 12, 21, 0.8) 18%, transparent 40%);
-    }
-    
-    .hero-blue {
-        opacity: 0.4;
-    }
+    /* EFEITO CORRIGIDO: DIAGONAL DO GESSO PERFEITA (SEM ERRO DE LINHA) + SOMBRAS */
+    background:
+      /* 1. TETO DE GESSO DIAGONAL: Cria a forma inclinada idêntica à foto do cliente */
+      linear-gradient(150deg,
+        #010714 10%,
+        #020a1d 20%,
+        rgba(12, 19, 31, 0.5) 50%,
+        transparent 60%),
+      /* 2. BASE DO RODAPÉ: Escurece suavemente atrás dos diferenciais */
+      linear-gradient(to top,
+        #010714 10%,
+        #020a1d 18%,
+        transparent 20%);
+  }
 
-   .hero-container {
-        width: 92%;
-        margin: 0 auto;
-        flex: 1;               
-        display: flex;
-        /* Alinha o conteúdo no topo do container flexível, forçando tudo a subir */
-        align-items: flex-start; 
-    }
+  /* REMOVE O ANTERIOR QUE CAUSAVA A LINHA FANTASMA */
+  .hero-overlay::before {
+    display: none !important;
+  }
 
-    .hero-content {
-        width: 100%;
-        /* Ajuste fino para posicionar o bloco verde exatamente onde você precisa */
-        padding-top: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+  .hero-blue {
+    opacity: 0.4;
+  }
 
-    /* Título maior para preencher espaço e dar imponência */
-    .hero h1 {
-        font-size: 32px; 
-        line-height: 1.15;
-        margin-top: 0;
-        margin-bottom: 12px;
-        max-width: 290px; 
-    }
+  .hero-container {
+    width: 92%;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    /* Alinha o conteúdo no topo do container flexível, forçando tudo a subir */
+    align-items: flex-start;
+  }
 
-    .hero p {
-        font-size: 13.5px; 
-        line-height: 1.45;
-        margin-bottom: 20px; 
-        color: #e5dec9;
-        max-width: 270px; 
-    }
+  .hero-content {
+    width: 100%;
+    /* Ajuste fino para posicionar o bloco verde exatamente onde você precisa */
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    .factory {
-        margin-top: 5px;
-        margin-bottom: 15px; /* Reduzido para aproximar os números */
-        gap: 8px;
-        max-width: 200px; 
-    }
+  /* Título maior para preencher espaço e dar imponência */
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.15;
+    margin-top: 0;
+    margin-bottom: 12px;
+    max-width: 290px;
+  }
 
-    .factory-line {
-        width: 30px;
-    }
+  .hero p {
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin-bottom: 20px;
+    color: #e5dec9;
+    max-width: 270px;
+  }
 
-    .factory span {
-        font-size: 10px;
-        letter-spacing: 1px;
-    }
+  .factory {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    /* Reduzido para aproximar os números */
+    gap: 8px;
+    max-width: 200px;
+  }
 
-    /* ==========================================================================
+  .factory-line {
+    width: 30px;
+  }
+
+  .factory span {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* ==========================================================================
        NÚMEROS BEM JUNTOS E PUXADOS PARA CIMA
        ========================================================================== */
-    .numbers {
-        display: flex;
-        flex-direction: row; 
-        flex-wrap: nowrap;          
-        justify-content: flex-start; 
-        align-items: flex-start;
-        gap: 15px;                   
-        margin-top: -8px; /* Puxa os números ainda mais para perto do "Direto de Fábrica" */
-        margin-bottom: 12px; /* Reduz consideravelmente o vão até o botão */
-        width: 100%;
-        max-width: 260px;            
-    }
+  .numbers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: -8px;
+    /* Puxa os números ainda mais para perto do "Direto de Fábrica" */
+    margin-bottom: 12px;
+    /* Reduz consideravelmente o vão até o botão */
+    width: 100%;
+    max-width: 260px;
+  }
 
-    .number {
-        flex: 0 1 auto;              /* Impede que eles se estiquem e se afastem */
-        min-width: 0;               
-        border-right: none !important; 
-        padding-right: 0 !important;   
-        text-align: left;
-    }
+  .number {
+    flex: 0 1 auto;
+    /* Impede que eles se estiquem e se afastem */
+    min-width: 0;
+    border-right: none !important;
+    padding-right: 0 !important;
+    text-align: left;
+  }
 
-    .number h2 {
-        font-size: 15px;             /* Tamanho bem ajustado */
-        margin-bottom: 1px;
-        white-space: nowrap;        
-    }
+  .number h2 {
+    font-size: 15px;
+    /* Tamanho bem ajustado */
+    margin-bottom: 1px;
+    white-space: nowrap;
+  }
 
-    .number p {
-        font-size: 8px;             
-        letter-spacing: 0px;
-        line-height: 1.2;
-        color: #bfae95;
-    }
+  .number p {
+    font-size: 8px;
+    letter-spacing: 0px;
+    line-height: 1.2;
+    color: #bfae95;
+  }
 
-    /* Botão do WhatsApp subindo mais na tela */
-    .hero-action {
-        margin-top: 5px;
-        /* Reduzimos o espaço abaixo do botão para ele colar no bloco verde e subir junto */
-        margin-bottom: 10px; 
-        display: flex;
-        justify-content: flex-start;
-    }
+  /* Botão do WhatsApp subindo mais na tela */
+  .hero-action {
+    margin-top: 5px;
+    /* Reduzimos o espaço abaixo do botão para ele colar no bloco verde e subir junto */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+  }
 
-    .btn-whatsapp {
-        padding: 14px 28px; 
-        font-size: 11.5px;
-        gap: 8px;
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-    }
+  .btn-whatsapp {
+    padding: 14px 28px;
+    font-size: 11.5px;
+    gap: 8px;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
 
-    .btn-whatsapp i {
-        font-size: 16px;
-    }
+  .btn-whatsapp i {
+    font-size: 16px;
+  }
 
-    /* ==========================================================================
+  /* ==========================================================================
        DIFERENCIAIS (RODAPÉ) - IMPECÁVEIS
        ========================================================================== */
-    .hero-footer {
-        position: relative;
-        padding-top: 20px;      
-        padding-bottom: 5px;
-        background: transparent; 
-        margin-top: 10px;
-        width: 100%;
-    }
+  .hero-footer {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    background: transparent;
+    margin-top: 10px;
+    width: 100%;
+  }
 
-    .hero-footer::before {
-        display: block;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 5%;
-        width: 90%;
-        height: 1px;
-        background: linear-gradient(
-            to right,
-            transparent,
-            rgba(203, 165, 91, 0.25),
-            transparent
-        );
-    }
+  .hero-footer::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 1px;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(203, 165, 91, 0.25),
+        transparent);
+  }
 
-    .hero-footer .container {
-        width: 100%;       
-        max-width: 100%;
-        padding: 0 12px;   
-    }
+  .hero-footer .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+  }
 
-    .diferenciais {
-        display: flex;
-        flex-direction: row; 
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 10px; 
-    }
+  .diferenciais {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-    .item {
-        flex: 1;
-        min-width: 0; 
-        flex-direction: column; 
-        align-items: center;
-        text-align: center;
-        gap: 8px; 
-    }
+  .item {
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
 
-    .item img {
-        width: 34px; 
-        height: 34px;
-        filter: drop-shadow(0 2px 8px rgba(203,165,91,0.2));
-    }
+  .item img {
+    width: 34px;
+    height: 34px;
+    filter: drop-shadow(0 2px 8px rgba(203, 165, 91, 0.2));
+  }
 
-    .textos {
-        align-items: center;
-        width: 100%;
-    }
+  .textos {
+    align-items: center;
+    width: 100%;
+  }
 
-    .textos h3 {
-        font-size: 9.5px; 
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        color: var(--gold-light);
-        line-height: 1.2;
-        margin-bottom: 3px;
-        white-space: normal; 
-    }
+  .textos h3 {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--gold-light);
+    line-height: 1.2;
+    margin-bottom: 3px;
+    white-space: normal;
+  }
 
-    .textos p {
-        display: block; 
-        font-size: 7.5px;
-        line-height: 1.2;
-        letter-spacing: 0.3px;
-        color: #e8e3d6;
-        opacity: 0.85;
-    }
+  .textos p {
+    display: block;
+    font-size: 7.5px;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+    color: #e8e3d6;
+    opacity: 0.85;
+  }
 }
 
 /* ==========================================================================
    10. AJUSTE FINO PARA CELULARES MÉDIOS (Ex: iPhone 12/13/14 - MAX 412px)
    ========================================================================== */
 @media (max-width: 412px) {
-    .hero {
-        padding-top: 95px;
-        padding-bottom: 25px;
-    }
+  .hero {
+    padding-top: 95px;
+    padding-bottom: 25px;
+  }
 
-    .hero h1 {
-        font-size: 28px;
-        max-width: 260px;
-    }
+  .hero h1 {
+    font-size: 28px;
+    max-width: 260px;
+  }
 
-    .hero p {
-        font-size: 12.5px;
-    }
+  .hero p {
+    font-size: 12.5px;
+  }
 
-    /* Números super integrados, coladinhos e altos no iPhone 12 */
-    .numbers {
-        gap: 10px;               /* Diminuído o espaço entre os números */
-        margin-top: -8px;        /* Sobe ainda mais o bloco de números */
-        margin-bottom: 15px;
-        max-width: 230px;        /* Deixa o bloco de números mais estreito lateralmente */
-    }
+  /* Números super integrados, coladinhos e altos no iPhone 12 */
+  .numbers {
+    gap: 10px;
+    /* Diminuído o espaço entre os números */
+    margin-top: -8px;
+    /* Sobe ainda mais o bloco de números */
+    margin-bottom: 15px;
+    max-width: 230px;
+    /* Deixa o bloco de números mais estreito lateralmente */
+  }
 
-    .number h2 {
-        font-size: 13.5px;
-    }
+  .number h2 {
+    font-size: 13.5px;
+  }
 
-    .number p {
-        font-size: 7.5px;
-    }
+  .number p {
+    font-size: 7.5px;
+  }
 
-    .btn-whatsapp {
-        padding: 13px 24px;
-        font-size: 11px;
-    }
+  .btn-whatsapp {
+    padding: 13px 24px;
+    font-size: 11px;
+  }
 
-    .item img {
-        width: 30px;
-        height: 30px;
-    }
+  .item img {
+    width: 30px;
+    height: 30px;
+  }
 
-    .textos h3 {
-        font-size: 8.5px;
-    }
+  .textos h3 {
+    font-size: 8.5px;
+  }
 
-    .textos p {
-        font-size: 7px;
-    }
+  .textos p {
+    font-size: 7px;
+  }
 }
 
 /* ==========================================================================
    11. AJUSTE FINO PARA CELULARES ULTRA COMPACTOS (MAX 360px)
    ========================================================================== */
 @media (max-width: 360px) {
-    .hero h1 {
-        font-size: 24px;
-        max-width: 220px;
-    }
+  .hero h1 {
+    font-size: 24px;
+    max-width: 220px;
+  }
 
-    .numbers {
-        gap: 8px;
-        margin-top: -10px;
-        max-width: 210px;
-    }
+  .numbers {
+    gap: 8px;
+    margin-top: -10px;
+    max-width: 210px;
+  }
 
-    .number h2 {
-        font-size: 12px;
-    }
+  .number h2 {
+    font-size: 12px;
+  }
 
-    .number p {
-        font-size: 7px;
-    }
+  .number p {
+    font-size: 7px;
+  }
 
-    .btn-whatsapp {
-        padding: 12px 20px;
-        font-size: 10px;
-    }
+  .btn-whatsapp {
+    padding: 12px 20px;
+    font-size: 10px;
+  }
 
-    .item img {
-        width: 26px;
-        height: 26px;
-    }
+  .item img {
+    width: 26px;
+    height: 26px;
+  }
 
-    .textos h3 {
-        font-size: 7.5px;
-    }
+  .textos h3 {
+    font-size: 7.5px;
+  }
 
-    .textos p {
-        font-size: 6.5px;
-    }
+  .textos p {
+    font-size: 6.5px;
+  }
+}
+
+/* ==========================================================================
+   12. SEÇÃO PRODUTOS
+   ========================================================================== */
+.produtos-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.produtos-label span:not(.linha) {
+  color: var(--gold-light);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.produtos-label .linha {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(203, 165, 91, .6), transparent);
+}
+
+.produtos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 60px;
+}
+
+.produto-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(203, 165, 91, .12);
+  border-radius: 14px;
+  padding: 14px;
+  transition: .3s ease;
+}
+
+.produto-item:hover,
+.produto-item:active {
+  border-color: rgba(203, 165, 91, .4);
+  background: rgba(203, 165, 91, .05);
+}
+
+.produto-foto {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(203, 165, 91, .25);
+}
+
+.produto-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.produto-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.produto-info h3 {
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+.produto-info p {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #cfc7b8;
+}
+
+.produto-item i {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+/* Desktop: você disse que ajusta depois, deixei só o essencial pra não quebrar */
+@media (min-width: 769px) {
+  .produtos-list {
+    max-width: 640px;
+    margin: 0 auto;
+  }
 }
