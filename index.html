@@ -1,66 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="assets/favicon/favicon-32x32.png" type="image/x-icon">
-    
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="assets/favicon/favicon-32x32.png"
+      type="image/x-icon"
+    />
+
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
 
     <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Destake Persianas</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Menu e Header -->
     <header id="header">
-        <div class="container">
-            <!-- logo -->
-            <a href="#" class="logo">
-                <img src="assets/logotipos/logo.png" alt="Destake Persianas">
-            </a>
-            <!-- Botões no menu -->
-            <nav id="nav">
-                <a href="#">Início</a>
-                <a href="#">Produtos</a>
-                <a href="#">Sobre</a>
-                <a href="#">Projetos</a>
-                <a href="#">Contato</a>
-            </nav>
-            <!-- Botão hamburguer para telas menores -->
-            <button id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+      <div class="container">
+        <!-- logo -->
+        <a href="#" class="logo">
+          <img src="assets/logotipos/logo.png" alt="Destake Persianas" />
+        </a>
+        <!-- Botões no menu -->
+        <nav id="nav">
+          <a href="#">Início</a>
+          <a href="#">Produtos</a>
+          <a href="#">Sobre</a>
+          <a href="#">Projetos</a>
+          <a href="#">Contato</a>
+        </nav>
+        <!-- Botão hamburguer para telas menores -->
+        <button id="burger" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </header>
     <!-- Home -->
-    <section class="home">
+    <section class="home" id="home">
+      <div class="overlay"></div>
 
+      <div class="container">
+        <div class="hero-content">
+          <span>Elegância que se vê,</span>
 
-        
+          <h1>
+            CONFORTO QUE<br />
+            SE SENTE.
+          </h1>
+
+          <p>
+            Soluções personalizadas em Persianas e Cortinas para transformar seu
+            ambiente.
+          </p>
+
+          <a href="#" class="btn-home">
+            <i class="fa-brands fa-whatsapp"></i>
+            Fale com Especialista
+          </a>
+
+          <div class="hero-icons">
+            <!-- <div class="hero-item">
+        <img src="assets/icons/selo-experiencia.png" alt="Experiência">
+        <h3>+13 ANOS</h3>
+        <p>DE EXPERIÊNCIA</p>
+    </div>
+
+    <div class="hero-item">
+        <img src="assets/icons/icon-selo.png" alt="Materiais">
+        <h3>MATERIAIS DE</h3>
+        <p>ALTA QUALIDADE</p>
+    </div>
+
+    <div class="hero-item">
+        <img src="assets/icons/icon-ferramenta.png" alt="Instalação">
+        <h3>INSTALAÇÃO</h3>
+        <p>ESPECIALIZADA</p>
+    </div>
+
+    <div class="hero-item">
+        <img src="assets/icons/icon-compasso.png" alt="Projetos">
+        <h3>PROJETOS</h3>
+        <p>PERSONALIZADOS</p>
+    </div> -->
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Produtos -->
-    <section class="produtos"></section>
+    <section class="produtos" id="produtos">
+
+    <div class="container">
+
+        <div class="produtos-content">
+
+            <span>Nossos Produtos</span>
+
+            <h2>Soluções para todos os ambientes</h2>
+
+            <p>
+                Persianas e cortinas que unem sofisticação,
+                conforto e funcionalidade para transformar
+                qualquer espaço.
+            </p>
+
+        </div>
+
+        <div class="produtos-grid">
+
+            <div class="produto-card">
+                <h3>Persianas</h3>
+            </div>
+
+            <div class="produto-card">
+                <h3>Cortinas</h3>
+            </div>
+
+            <div class="produto-card">
+                <h3>Motorização</h3>
+            </div>
+
+            <div class="produto-card">
+                <h3>Acessórios</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- Sobre -->
-    <section class="sobre"></section>
+    <section class="sobre" id="sobre">
+      <div class="container"></div>
+    </section>
 
     <!-- Projetos -->
-    <section class="projetos"></section>
-    
+    <section class="projetos" id="projetos">
+      <div class="container"></div>
+    </section>
+
     <!-- Contato -->
-    <footer class="contato"></footer>
+    <footer class="contato" id="contato">
+      <div class="container"></div>
+    </footer>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

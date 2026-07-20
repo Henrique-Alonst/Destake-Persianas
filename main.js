@@ -1,20 +1,28 @@
-// Controle do efeito de mudança de estilo do Header ao rolar a página
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 40);
+const burger = document.getElementById("burger");
+const menu = document.getElementById("nav");
+
+burger.addEventListener("click", () => {
+    menu.classList.toggle("active");
 });
 
-// Controle do Menu de Navegação responsivo (Mobile Burger Menu)
-const burger = document.getElementById('burger');
-const nav = document.getElementById('nav');
+document.querySelectorAll("#nav a").forEach(link => {
 
-burger.addEventListener('click', () => {
-  nav.classList.toggle('open');
+    link.addEventListener("click", () => {
+
+        menu.classList.remove("active");
+
+    });
+
 });
 
-// Fecha o menu móvel ao clicar em qualquer link de navegação
-nav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-  });
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+
 });
