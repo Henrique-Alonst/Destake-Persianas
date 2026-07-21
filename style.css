@@ -445,6 +445,7 @@ nav a:hover {
     padding:120px 0;
 
     background:var(--beige-light);
+    
 
 }
 
@@ -455,19 +456,21 @@ nav a:hover {
     margin-bottom:70px;
 
 }
-
+/* Mini titulo de produtos */
 .produtos-content span{
 
-    color:var(--gold);
+    color: var(--gold-dark);
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 
-    letter-spacing:3px;
+    letter-spacing: 4px;
 
-    font-size:.9rem;
+    font-size: .85rem;
+
+    font-weight: 600;
 
 }
-
+/* Titulo de produtos */
 .produtos-content h2{
 
     color:var(--dark);
@@ -477,7 +480,7 @@ nav a:hover {
     margin:18px 0;
 
 }
-
+/* Paragrafo de produtos */
 .produtos-content p{
 
     max-width:650px;
@@ -497,42 +500,147 @@ nav a:hover {
     gap:25px;
 
 }
-
+/* Card de produtos*/
 .produto-card{
-
-    height:260px;
-
-    border-radius:18px;
-
-    background:var(--white);
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    gap:24px;
+
+    padding:22px 26px;
+
+    background:var(--white);
+
+    border-radius:22px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 
     transition:var(--transition);
 
-    box-shadow:var(--shadow-sm);
+    cursor:pointer;
+
+}
+
+/* Barrinha vermelha */
+
+.produto-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:6px;
+    height:100%;
+
+    background:var(--red);
+
+    transform:scaleY(0);
+
+    transform-origin:top;
+
+    transition:.35s;
+
+}
+
+.produto-card:hover::before{
+
+    transform:scaleY(1);
 
 }
 
 .produto-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-5px);
 
-    box-shadow:var(--shadow);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+}
+/* Imagem de produtos */
+.produto-card img{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid rgba(177,31,40,.18);
+
+    transition:.35s;
 
 }
 
-.produto-card h3{
+.produto-card:hover img{
+
+    border-color:var(--red);
+
+    transform:scale(1.05);
+
+}
+/* Informações */
+.produto-info{
+
+    flex:1;
+
+}
+
+.produto-info h3{
 
     color:var(--dark);
 
-    font-size:1.5rem;
+    font-size:1.35rem;
+
+    margin-bottom:6px;
 
 }
+
+.produto-info p{
+
+    color:#666;
+
+    font-size:.95rem;
+
+}
+
+.produto-card i{
+
+    font-size:1.2rem;
+
+    color:var(--red);
+
+    transition:.35s;
+
+}
+
+.produto-card:hover i{
+
+    transform:translateX(8px);
+
+}
+/* Container pai para espaçar melhor */
+.produtos-lista{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    margin-top: 60px;
+
+}
+
 
 
 /*Responsividade*/

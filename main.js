@@ -16,6 +16,7 @@ document.querySelectorAll("#nav a").forEach(link => {
 });
 
 const header = document.getElementById("header");
+const produtos = document.getElementById("produtos");
 
 window.addEventListener("scroll", () => {
 
