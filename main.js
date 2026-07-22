@@ -1,3 +1,4 @@
+//Menu responsivo
 const burger = document.getElementById("burger");
 const menu = document.getElementById("nav");
 
@@ -15,6 +16,7 @@ document.querySelectorAll("#nav a").forEach(link => {
 
 });
 
+//Scroll 
 const header = document.getElementById("header");
 const produtos = document.getElementById("produtos");
 
@@ -28,9 +30,7 @@ window.addEventListener("scroll", () => {
 
 });
 
-/* =========================
-   CARROSSEL DEPOIMENTOS
-========================= */
+/* Carrosel e depoimentos */
 
 const track = document.getElementById("depoimentosTrack");
 const cards = Array.from(track.children);

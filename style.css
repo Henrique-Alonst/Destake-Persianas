@@ -1,6 +1,3 @@
-/* IMPORTS */
-/* VARIÁVEIS */
-
 :root{
    /* ========= CORES PRINCIPAIS ========= */
 
@@ -147,27 +144,27 @@ header {
         backdrop-filter .4s ease,
         box-shadow .4s ease;
 }
+
 /* Animações quando scrollar */
 header.scrolled{
-
     background: rgba(20,20,20,.35);
-
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-
     border-bottom: 1px solid rgba(255,255,255,.08);
-
 }
+
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 90px;
 }
+
 /* Foto da logo no header */
 .logo img {
   height: 58px;
 }
+
 /* Menu */
 nav {
   display: flex;
@@ -192,6 +189,7 @@ nav a:hover {
   padding: 12px 26px;
   border-radius: 50px;
 }
+
 /*Botao menu quando estiver em telas menores*/
 #burger{
     display:none;
@@ -204,10 +202,8 @@ nav a:hover {
 .home{
     position: relative;
     min-height: 100vh;
-
     display: flex;
     align-items: center;
-
     background-image: url("assets/backgrounds/background-desktop.png");
     background-size: cover;
     background-position: center;
@@ -217,7 +213,6 @@ nav a:hover {
 .overlay{
     position:absolute;
     inset:0;
-
     background:linear-gradient(
         90deg,
         rgba(0,0,0,.80) 0%,
@@ -233,74 +228,50 @@ nav a:hover {
 }
 
 .hero-content{
-
     max-width:600px;
-
 }
+
 /* Span acima do titulo */
 .hero-content span{
-
     display:block;
-
     color:var(--gold-light);
-
     font-size:1rem;
-
     letter-spacing:4px;
-
     text-transform:uppercase;
-
     margin-bottom:20px;
-
 }
+
 /* Titulo */
 .hero-content h1{
-
     font-family:var(--font-title);
-
     font-size:clamp(3.5rem,7vw,5.8rem);
-
     line-height:.95;
-
     font-weight:500;
-
     color:var(--white);
-
     margin-bottom:25px;
-
 }
+
 /* Paragrafo  */
 .hero-content p{
-
     max-width:520px;
-
     color:var(--gold-light);
-
     font-size:1.35rem;
-
     line-height:1.7;
-
     margin-bottom:45px;
-
 }
+
 /* Botão especialista */
 .btn-home{
     display: inline-flex;
     align-items: center;
     gap: 12px;
-
     padding: 18px 36px;
-
     background: var(--red);
     color: var(--white);
-
     border-radius: var(--radius-full);
-
     font-weight: 600;
     font-size: 1rem;
-
     transition: .35s ease;
-
     box-shadow:
         0 12px 30px rgba(177, 31, 40, .35),
         0 0 20px rgba(177, 31, 40, .20);
@@ -309,15 +280,11 @@ nav a:hover {
 }
 
 .btn-home:hover{
-
     background: var(--red-hover);
-
     transform: translateY(-5px) scale(1.03);
-
     box-shadow:
         0 18px 45px rgba(177,31,40,.45),
         0 0 35px rgba(177,31,40,.35);
-
 }
 
 .btn-home i{
@@ -365,6 +332,7 @@ nav a:hover {
     }
 
 }
+
 /* Container */
 .container{
     max-width: 1280px;
@@ -372,218 +340,139 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* ===========================
-   PRODUTOS
-=========================== */
+/* Produtos */
 
 .produtos{
-
     padding:120px 0;
-
     background:var(--beige-light);
-    
-
 }
 
 .produtos-content{
-
     text-align:center;
-
     margin-bottom:70px;
-
 }
+
 /* Mini titulo de produtos */
 .produtos-content span{
-
     color: var(--gold-dark);
-
     text-transform: uppercase;
-
     letter-spacing: 4px;
-
     font-size: .85rem;
-
     font-weight: 600;
-
 }
+
 /* Titulo de produtos */
 .produtos-content h2{
-
     color:var(--dark);
-
     font-size:3rem;
-
     margin:18px 0;
-
 }
+
 /* Paragrafo de produtos */
 .produtos-content p{
-
     max-width:650px;
-
     margin:auto;
-
     color:#555;
-
 }
 
 .produtos-grid{
-
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:25px;
-
 }
+
 /* Card de produtos*/
 .produto-card{
-
     display:flex;
-
     align-items:center;
-
     gap:24px;
-
     padding:22px 26px;
-
     background:var(--white);
-
     border-radius:22px;
-
     position:relative;
-
     overflow:hidden;
-
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-
     transition:var(--transition);
-
     cursor:pointer;
-
 }
 
 /* Barrinha vermelha */
-
 .produto-card::before{
-
     content:"";
-
     position:absolute;
-
     left:0;
     top:0;
-
     width:6px;
     height:100%;
-
     background:var(--red);
-
     transform:scaleY(0);
-
     transform-origin:top;
-
     transition:.35s;
-
 }
 
 .produto-card:hover::before{
-
     transform:scaleY(1);
-
 }
 
 .produto-card:hover{
-
     transform:translateY(-5px);
-
     box-shadow:0 20px 45px rgba(0,0,0,.15);
-
 }
+
 /* Imagem de produtos */
 .produto-card img{
-
     width:95px;
-
     height:95px;
-
     border-radius:50%;
-
     object-fit:cover;
-
     border:3px solid rgba(177,31,40,.18);
-
     transition:.35s;
-
 }
 
 .produto-card:hover img{
-
     border-color:var(--red);
-
     transform:scale(1.05);
-
 }
+
 /* Informações */
 .produto-info{
-
     flex:1;
-
 }
 
 .produto-info h3{
-
     color:var(--dark);
-
     font-size:1.35rem;
-
     margin-bottom:6px;
-
 }
 
 .produto-info p{
-
     color:#666;
-
     font-size:.95rem;
-
 }
 
 .produto-card i{
-
     font-size:1.2rem;
-
     color:var(--red);
-
     transition:.35s;
-
 }
 
 .produto-card:hover i{
-
     transform:translateX(8px);
-
 }
 /* Container pai para espaçar melhor */
 .produtos-lista{
-
     display: flex;
-
     flex-direction: column;
-
     gap: 22px;
-
     margin-top: 60px;
-
 }
 
-/* PROJETOS */
+/* Projetos */
 
 .projetos{
     padding: 100px 0;
     background: var(--dark);
 }
-
 
 .projetos-content{
     text-align:center;
@@ -591,20 +480,13 @@ nav a:hover {
     margin:0 auto 60px;
 }
 
-
-.projetos-content span{
-    
+.projetos-content span{    
     color: var(--gold-light);
-
     text-transform: uppercase;
-
     letter-spacing: 4px;
-
     font-size: .85rem;
-
     font-weight: 600;
 }
-
 
 .projetos-content h2{
     font-family:"Cormorant Garamond", serif;
@@ -614,7 +496,6 @@ nav a:hover {
     margin:15px 0;
 }
 
-
 .projetos-content p{
     font-family:"Jost", sans-serif;
     color:#bdb8ae;
@@ -622,15 +503,12 @@ nav a:hover {
     line-height:1.8;
 }
 
-
 /* GALERIA */
-
 .projetos-galeria{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
     gap:30px;
 }
-
 
 .projeto-card{
     position:relative;
@@ -640,7 +518,6 @@ nav a:hover {
     cursor:pointer;
 }
 
-
 .projeto-card img{
     width:100%;
     height:100%;
@@ -648,38 +525,30 @@ nav a:hover {
     transition:.6s ease;
 }
 
-
 /* camada escura */
-
 .projeto-card::after{
     content:"";
     position:absolute;
     inset:0;
-
     background:linear-gradient(
         to top,
         rgba(0,0,0,.85),
         transparent 60%
     );
-
     opacity:.9;
 }
 
 
 /* informações */
-
 .projeto-overlay{
     position:absolute;
     bottom:0;
     left:0;
-
     padding:35px;
     z-index:2;
-
     transform:translateY(15px);
     transition:.4s ease;
 }
-
 
 .projeto-overlay h3{
     font-family:"Cormorant Garamond", serif;
@@ -689,7 +558,6 @@ nav a:hover {
     margin-bottom:8px;
 }
 
-
 .projeto-overlay p{
     font-family:"Jost", sans-serif;
     color:var(--gold-light);
@@ -697,10 +565,7 @@ nav a:hover {
     letter-spacing:1px;
 }
 
-
-
 /* HOVER */
-
 .projeto-card:hover img{
     transform:scale(1.08);
 }
@@ -715,28 +580,20 @@ nav a:hover {
 }
 
 /* linha dourada */
-
 .projeto-overlay::before{
     content:"";
-
     display:block;
-
     width:45px;
     height:2px;
-
     background:var(--gold);
-
     margin-bottom:15px;
 }
 
-/* =========================
-   SOBRE
-========================= */
+/* Sobre */
 
 .sobre{
     position: relative;
     padding: 120px 0;
-
     background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.82)),
         url("assets/produtos/300.jpg") center center / cover no-repeat;
@@ -748,11 +605,6 @@ nav a:hover {
     content: "";
     position: absolute;
     inset: 0;
-
-    /* background:
-        linear-gradient(rgba(7, 7, 7, .82), rgba(7, 7, 7, .90)),
-        url("assets/produtos/16") center center / cover no-repeat; */
-
     transform: scale(1.08);
     filter: blur(4px);
     z-index: -2;
@@ -803,7 +655,6 @@ nav a:hover {
     width: 120px;
     height: 2px;
     margin: 20px auto 0;
-
     background: linear-gradient(
         90deg,
         transparent,
@@ -816,34 +667,27 @@ nav a:hover {
     color: var(--gold-light);
     font-weight: 500;
 }
+
 .btn-sobre{
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-
     margin: 3.5rem auto 0;
     width: fit-content;
-
     padding: 18px 36px;
-
     background: linear-gradient(
         135deg,
         var(--gold-light),
         var(--gold)
     );
-
     color: var(--dark);
-
     border: 1px solid rgba(154, 117, 56, .15);
     border-radius: var(--radius-full);
-
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-
     transition: var(--transition);
-
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.35),
         0 10px 24px rgba(154,117,56,.18),
@@ -851,7 +695,6 @@ nav a:hover {
 }
 
 .btn-sobre:hover{
-
     background: linear-gradient(
     135deg,
     #e6cf9d,
@@ -859,9 +702,7 @@ nav a:hover {
 );
 
     color: var(--white);
-
     transform: translateY(-5px);
-
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.20),
         0 18px 40px rgba(154,117,56,.28),
@@ -877,67 +718,45 @@ nav a:hover {
     transform: translateX(3px);
 }
 
-/* =========================
-   WHATSAPP FLUTUANTE
-========================= */
+/*  Whatsapp Flutuante */
 
 .whatsapp-float{
-
     position: fixed;
-
     right: 30px;
     bottom: 30px;
-
     width: 64px;
     height: 64px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: var(--whatsapp);
     color: var(--white);
-
     border-radius: 50%;
-
     font-size: 2rem;
-
     z-index: 999;
-
     box-shadow:
         0 12px 30px rgba(37,211,102,.35),
         0 0 20px rgba(37,211,102,.20);
-
     transition: var(--transition);
-
     border: 3px solid rgba(255,255,255,.15);
 }
 
 
 .whatsapp-float:hover{
-
     background: var(--whatsapp-hover);
-
     transform:
         translateY(-6px)
         scale(1.08);
-
     box-shadow:
         0 20px 45px rgba(37,211,102,.45),
         0 0 35px rgba(37,211,102,.30);
-
 }
-
 
 .whatsapp-float i{
-
     color: var(--white);
-
 }
 
-/* =========================
-   DEPOIMENTOS
-========================= */
+/* Depoimentos */
 
 .depoimentos{
     padding: 120px 0;
@@ -974,9 +793,7 @@ nav a:hover {
     line-height: 1.8;
 }
 
-/* =========================
-   CARROSSEL / SETAS
-========================= */
+/* Carrosel e Setas */
 
 .depoimentos-carrossel{
     position: relative;
@@ -992,25 +809,18 @@ nav a:hover {
 
 .depoimentos-seta{
     flex: 0 0 auto;
-
     width: 52px;
     height: 52px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: var(--white);
     color: var(--gold-dark);
-
     border: 1px solid rgba(203,165,91,.25);
     border-radius: 50%;
-
     font-size: 1.1rem;
-
     cursor: pointer;
     transition: var(--transition);
-
     box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
@@ -1020,9 +830,7 @@ nav a:hover {
     transform: scale(1.08);
 }
 
-/* =========================
-   TRACK / CARDS
-========================= */
+/* Track e cars */
 
 .depoimentos-track{
     display: flex;
@@ -1033,19 +841,14 @@ nav a:hover {
 
 .depoimento-card{
     flex: 0 0 calc((100% - 60px) / 3);
-
     position: relative;
     overflow: hidden;
-
     padding: 40px 35px;
-
     background: var(--white);
     border-radius: 28px;
     border: 1px solid rgba(203,165,91,.18);
-
     opacity: .4;
     transform: scale(.94);
-
     transition: opacity .6s ease, transform .6s ease, box-shadow .35s ease;
 }
 
@@ -1102,9 +905,7 @@ nav a:hover {
     font-size: .9rem;
 }
 
-/* =========================
-   DOTS
-========================= */
+/* Dots ... */
 
 .depoimentos-dots{
     display: flex;
@@ -1144,33 +945,23 @@ nav a:hover {
     }
 
     nav{
-
         position:fixed;
-
         top:0;
         right:-100%;
-
         width:280px;
         height:100vh;
-
         background:var(--dark);
-
         display:flex;
         flex-direction:column;
-
         justify-content:center;
         align-items:center;
-
         gap:35px;
-
         transition:.35s;
 
     }
 
     nav.active{
-
         right:0;
-
     }
 
     .home{
@@ -1178,13 +969,10 @@ nav a:hover {
     }
 
     .produtos-grid{
-
         grid-template-columns:repeat(2,1fr);
-
     }
 
 }
-
 
 /* =========================
    768px — Depoimentos / Sobre / Projetos
@@ -1193,7 +981,7 @@ nav a:hover {
 @media(max-width:768px){
 
     /* Depoimentos */
-
+    
     .depoimentos{
         padding: 80px 0;
     }
@@ -1201,23 +989,17 @@ nav a:hover {
     .depoimentos-header{
 
         margin-bottom: 40px;
-
         padding: 0 10px;
 
     }
 
     .depoimentos-header h2{
-
         font-size: 2.8rem;
-
     }
 
     .depoimentos-header p{
-
         font-size: 1rem;
-
         line-height: 1.7;
-
     }
 
     .depoimentos-carrossel{
@@ -1231,53 +1013,36 @@ nav a:hover {
     }
 
     .depoimentos-track{
-
         gap: 20px;
-
     }
 
     .depoimento-card{
-
         flex: 0 0 100%;
-
     }
 
     .stars{
 
         font-size: 1.15rem;
-
         letter-spacing: 3px;
-
         margin-bottom: 20px;
-
     }
 
     .depoimento-card p{
-
         font-size: .98rem;
-
         line-height: 1.7;
-
     }
 
     .cliente strong{
-
         font-size: .95rem;
-
     }
 
     .cliente span{
-
         font-size: .85rem;
-
     }
 
     .depoimentos-dots{
-
         margin-top: 35px;
-
     }
-
 
     /* Sobre */
 
@@ -1293,7 +1058,6 @@ nav a:hover {
         font-size: 1.05rem;
         line-height: 1.9;
     }
-
 
     /* Projetos */
 
@@ -1324,7 +1088,6 @@ nav a:hover {
 
 }
 
-
 /* =========================
    600px — Produtos grid
 ========================= */
@@ -1332,13 +1095,10 @@ nav a:hover {
 @media(max-width:600px){
 
     .produtos-grid{
-
         grid-template-columns:1fr;
-
     }
 
 }
-
 
 /* =========================
    576px — Whatsapp flutuante / Sobre
@@ -1347,13 +1107,10 @@ nav a:hover {
 @media(max-width:576px){
 
     .whatsapp-float{
-
         right: 18px;
         bottom: 20px;
-
         width: 56px;
         height: 56px;
-
         font-size: 1.7rem;
     }
 
@@ -1367,7 +1124,6 @@ nav a:hover {
     }
 
 }
-
 
 /* =========================
    480px — Depoimentos (setas)
