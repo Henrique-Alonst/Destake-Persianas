@@ -111,6 +111,40 @@ function updateActiveCards(){
    Isso é o que garante o encaixe perfeito, sem cortes, não importa
    o gap ou o número de cards por página */
 
+let currentOffset = 0;
+let rafId = null;
+
+function easeOutExpo(t){
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+}
+
+function animateTrackTo(target, duration = 900){
+
+    cancelAnimationFrame(rafId);
+
+    const start = currentOffset;
+    const startTime = performance.now();
+
+    function step(now){
+
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        const eased = easeOutExpo(t);
+        const value = start + (target - start) * eased;
+
+        track.style.transform = `translateX(-${value}px)`;
+        currentOffset = value;
+
+        if(t < 1){
+            rafId = requestAnimationFrame(step);
+        }
+
+    }
+
+    rafId = requestAnimationFrame(step);
+
+}
+
 function goTo(page){
 
     const pages = totalPages();
@@ -121,7 +155,7 @@ function goTo(page){
     const targetIndex = Math.min(current * view, cards.length - 1);
     const offset = cards[targetIndex].offsetLeft;
 
-    track.style.transform = `translateX(-${offset}px)`;
+    animateTrackTo(offset);
 
     updateDots();
     updateActiveCards();
