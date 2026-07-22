@@ -372,70 +372,6 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* Icones Selo */
-/* .hero-icons{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    gap:20px;
-
-    margin-top:70px;
-
-}
-
-.hero-item{
-
-    flex:1;
-
-    text-align:center;
-
-}
-
-.hero-item img{
-
-    width:58px;
-    height:58px;
-
-    object-fit:contain;
-
-    margin:0 auto 18px;
-
-}
-
-.hero-item h3{
-
-    font-family:var(--font-text);
-
-    color:var(--gold);
-
-    font-size:.95rem;
-
-    font-weight:600;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    margin-bottom:6px;
-
-}
-
-.hero-item p{
-
-    font-size:.82rem;
-
-    color:var(--text);
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
-    line-height:1.4;
-
-} */
-
 /* ===========================
    PRODUTOS
 =========================== */
@@ -941,79 +877,265 @@ nav a:hover {
     transform: translateX(3px);
 }
 
+/* =========================
+   WHATSAPP FLUTUANTE
+========================= */
+
+.whatsapp-float{
+
+    position: fixed;
+
+    right: 30px;
+    bottom: 30px;
+
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--whatsapp);
+    color: var(--white);
+
+    border-radius: 50%;
+
+    font-size: 2rem;
+
+    z-index: 999;
+
+    box-shadow:
+        0 12px 30px rgba(37,211,102,.35),
+        0 0 20px rgba(37,211,102,.20);
+
+    transition: var(--transition);
+
+    border: 3px solid rgba(255,255,255,.15);
+}
+
+
+.whatsapp-float:hover{
+
+    background: var(--whatsapp-hover);
+
+    transform:
+        translateY(-6px)
+        scale(1.08);
+
+    box-shadow:
+        0 20px 45px rgba(37,211,102,.45),
+        0 0 35px rgba(37,211,102,.30);
+
+}
+
+
+.whatsapp-float i{
+
+    color: var(--white);
+
+}
+
+/* =========================
+   DEPOIMENTOS
+========================= */
+
+.depoimentos{
+    padding: 120px 0;
+    background: var(--beige-light);
+}
+
+.depoimentos-header{
+    max-width: 760px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.depoimentos-header span{
+    display: block;
+    color: var(--gold-dark);
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.depoimentos-header h2{
+    font-family: var(--font-title);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 600;
+    color: var(--dark-3);
+    margin-bottom: 20px;
+}
+
+.depoimentos-header p{
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* =========================
+   CARROSSEL / SETAS
+========================= */
+
+.depoimentos-carrossel{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.depoimentos-viewport{
+    overflow: hidden;
+    flex: 1;
+}
+
+.depoimentos-seta{
+    flex: 0 0 auto;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--white);
+    color: var(--gold-dark);
+
+    border: 1px solid rgba(203,165,91,.25);
+    border-radius: 50%;
+
+    font-size: 1.1rem;
+
+    cursor: pointer;
+    transition: var(--transition);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.depoimentos-seta:hover{
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.08);
+}
+
+/* =========================
+   TRACK / CARDS
+========================= */
+
+.depoimentos-track{
+    display: flex;
+    gap: 30px;
+    will-change: transform;
+    transition: transform .8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.depoimento-card{
+    flex: 0 0 calc((100% - 60px) / 3);
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 40px 35px;
+
+    background: var(--white);
+    border-radius: 28px;
+    border: 1px solid rgba(203,165,91,.18);
+
+    opacity: .4;
+    transform: scale(.94);
+
+    transition: opacity .6s ease, transform .6s ease, box-shadow .35s ease;
+}
+
+.depoimento-card.is-active{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.depoimento-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.depoimento-card:hover{
+    transform: scale(1.02) translateY(-8px);
+    box-shadow:
+        0 20px 45px rgba(154,117,56,.18),
+        0 8px 18px rgba(0,0,0,.08);
+}
+
+.stars{
+    color: var(--gold);
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.depoimento-card p{
+    color: var(--dark-3);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.cliente{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cliente strong{
+    color: var(--dark-3);
+    font-size: 1rem;
+}
+
+.cliente span{
+    color: var(--text-dark);
+    font-size: .9rem;
+}
+
+/* =========================
+   DOTS
+========================= */
+
+.depoimentos-dots{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 45px;
+}
+
+.depoimentos-dots button{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: var(--beige-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.depoimentos-dots button.active{
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
 /* ============================= */
 /* RESPONSIVO */
 /* ============================= */
 
-/* Tablet */
-@media (max-width: 768px){
+/* =========================
+   900px — Menu mobile / Home / Produtos grid
+========================= */
 
-    .sobre{
-        padding: 90px 0;
-    }
-
-       .sobre{
-        background-position: 65% center;
-    }
-
-
-    .sobre-content p{
-        font-size: 1.05rem;
-        line-height: 1.9;
-    }
-
-}
-
-/* Celular */
-@media (max-width: 576px){
-
-    .sobre{
-        padding: 70px 0;
-    }
-
-    .sobre-content p{
-        font-size: 1rem;
-        line-height: 1.8;
-    }
-
-}
-
-@media(max-width:768px){
-
-    .projetos{
-        padding:70px 0;
-    }
-
-
-    .projetos-content h2{
-        font-size:40px;
-    }
-
-
-    .projetos-galeria{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-
-    .projeto-card{
-        height:380px;
-    }
-
-
-    .projeto-overlay{
-        padding:25px;
-    }
-
-
-    .projeto-overlay h3{
-        font-size:28px;
-    }
-
-}
-
-
-/*Responsividade*/
 @media(max-width:900px){
 
     #burger{
@@ -1055,10 +1177,6 @@ nav a:hover {
       background-image: url("assets/backgrounds/background.png");
     }
 
-}
-
-@media(max-width:900px){
-
     .produtos-grid{
 
         grid-template-columns:repeat(2,1fr);
@@ -1066,6 +1184,150 @@ nav a:hover {
     }
 
 }
+
+
+/* =========================
+   768px — Depoimentos / Sobre / Projetos
+========================= */
+
+@media(max-width:768px){
+
+    /* Depoimentos */
+
+    .depoimentos{
+        padding: 80px 0;
+    }
+
+    .depoimentos-header{
+
+        margin-bottom: 40px;
+
+        padding: 0 10px;
+
+    }
+
+    .depoimentos-header h2{
+
+        font-size: 2.8rem;
+
+    }
+
+    .depoimentos-header p{
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+
+    }
+
+    .depoimentos-carrossel{
+        gap: 10px;
+    }
+
+    .depoimentos-seta{
+        width: 40px;
+        height: 40px;
+        font-size: .95rem;
+    }
+
+    .depoimentos-track{
+
+        gap: 20px;
+
+    }
+
+    .depoimento-card{
+
+        flex: 0 0 100%;
+
+    }
+
+    .stars{
+
+        font-size: 1.15rem;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 20px;
+
+    }
+
+    .depoimento-card p{
+
+        font-size: .98rem;
+
+        line-height: 1.7;
+
+    }
+
+    .cliente strong{
+
+        font-size: .95rem;
+
+    }
+
+    .cliente span{
+
+        font-size: .85rem;
+
+    }
+
+    .depoimentos-dots{
+
+        margin-top: 35px;
+
+    }
+
+
+    /* Sobre */
+
+    .sobre{
+        padding: 90px 0;
+    }
+
+    .sobre{
+        background-position: 65% center;
+    }
+
+    .sobre-content p{
+        font-size: 1.05rem;
+        line-height: 1.9;
+    }
+
+
+    /* Projetos */
+
+    .projetos{
+        padding:70px 0;
+    }
+
+    .projetos-content h2{
+        font-size:40px;
+    }
+
+    .projetos-galeria{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .projeto-card{
+        height:380px;
+    }
+
+    .projeto-overlay{
+        padding:25px;
+    }
+
+    .projeto-overlay h3{
+        font-size:28px;
+    }
+
+}
+
+
+/* =========================
+   600px — Produtos grid
+========================= */
 
 @media(max-width:600px){
 
@@ -1077,31 +1339,44 @@ nav a:hover {
 
 }
 
-/* @media(max-width:768px){
 
-    .hero-icons{
+/* =========================
+   576px — Whatsapp flutuante / Sobre
+========================= */
 
-        gap:10px;
+@media(max-width:576px){
 
+    .whatsapp-float{
+
+        right: 18px;
+        bottom: 20px;
+
+        width: 56px;
+        height: 56px;
+
+        font-size: 1.7rem;
     }
 
-    .hero-item img{
-
-        width:38px;
-        height:38px;
-
+    .sobre{
+        padding: 70px 0;
     }
 
-    .hero-item h3{
-
-        font-size:.70rem;
-
+    .sobre-content p{
+        font-size: 1rem;
+        line-height: 1.8;
     }
 
-    .hero-item p{
+}
 
-        font-size:.60rem;
 
+/* =========================
+   480px — Depoimentos (setas)
+========================= */
+
+@media(max-width: 480px){
+
+    .depoimentos-seta{
+        display: none;
     }
 
-} */
+}
