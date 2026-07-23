@@ -257,3 +257,33 @@ window.addEventListener("resize", () => {
 buildDots();
 goTo(0);
 restartAutoplay();
+
+/* Scroll Reveal */
+
+const revealEls = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry, i) => {
+
+        if(entry.isIntersecting){
+
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+
+            setTimeout(() => {
+                el.classList.add("in-view");
+            }, delay);
+
+            revealObserver.unobserve(el);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -60px 0px"
+});
+
+revealEls.forEach(el => revealObserver.observe(el));
