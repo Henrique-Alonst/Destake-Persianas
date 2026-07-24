@@ -1182,7 +1182,7 @@ nav a,
     .diferenciais .item {
         flex: 1 1 40%;
         justify-content: center;
-        min-width: 130px;
+        min-width: 80px;
     }
 }
 
@@ -1309,6 +1309,41 @@ nav a,
     .projeto-overlay h3{
         font-size:28px;
     }
+
+    .hero-footer .container {
+    padding: 0 12px;
+  }
+
+  .diferenciais {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 7px;
+    padding: 12px 0;
+    border-top: none;
+    
+  }
+
+  .diferenciais .item {
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .diferenciais .item img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .diferenciais .item .textos h3 {
+    font-size: 0.6rem;
+    white-space: normal;
+  }
+
+  .diferenciais .item .textos p {
+    font-size: 0.55rem;
+    white-space: normal;
+  }
 
  
 
