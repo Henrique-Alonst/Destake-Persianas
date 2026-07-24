@@ -255,9 +255,11 @@ nav a:hover {
 .hero-content p{
     max-width:520px;
     color:var(--gold-light);
-    font-size:1.35rem;
+    font-size:1.25rem;
     line-height:1.7;
     margin-bottom:45px;
+    /* background-color: red; */
+    
 }
 
 /* Botão especialista */
@@ -333,11 +335,80 @@ nav a:hover {
 
 }
 
+/* Transições Globais */
+header,
+nav a,
+.item,
+.item::before {
+  transition: .35s ease-in-out;
+}
+
 /* Container */
 .container{
     max-width: 1280px;
     width: calc(100% - 48px);
     margin: 0 auto;
+}
+
+.hero-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.hero-footer .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.diferenciais {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.diferenciais .item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+.diferenciais .item img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.diferenciais .item .textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.diferenciais .item .textos h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--beige);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.diferenciais .item .textos p {
+  font-size: 0.8rem;
+  color: var(--gold-light); /* dourado, ajuste pro tom exato da paleta */
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 /* Produtos */
@@ -1102,6 +1173,17 @@ nav a:hover {
         grid-column: 1 / -1;
         max-width: 100%;
     }
+
+    .diferenciais {
+        justify-content: center;
+        gap: 20px 32px;
+    }
+
+    .diferenciais .item {
+        flex: 1 1 40%;
+        justify-content: center;
+        min-width: 130px;
+    }
 }
 
 .reveal{
@@ -1228,6 +1310,8 @@ nav a:hover {
         font-size:28px;
     }
 
+ 
+
 }
 
 /* =========================
@@ -1300,8 +1384,28 @@ nav a:hover {
 
 @media(max-width: 480px){
 
+    .hero-content h1{
+    font-family:var(--font-title);
+    font-size:clamp(3.2rem,6vw,4.8rem);
+    line-height:.95;
+    font-weight:500;
+    color:var(--white);
+    margin-bottom:25px;
+}
+
+.hero-content p{
+    max-width:520px;
+    color:var(--gold-light);
+    font-size:1.25rem;
+    line-height:1.7;
+    margin-bottom:45px;
+    /* background-color: red; */
+    
+}
+
     .depoimentos-seta{
         display: none;
     }
+    
 
 }
