@@ -519,6 +519,7 @@ nav a,
 .produto-info p{
     color:#666;
     font-size:.95rem;
+    line-height: 15px;
 }
 
 .produto-card i{
@@ -575,18 +576,88 @@ nav a,
 }
 
 /* GALERIA */
-.projetos-galeria{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:30px;
+/* CARROSSEL DE PROJETOS */
+
+.projetos-carrossel{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.projetos-viewport{
+    overflow: hidden;
+    flex: 1;
+}
+
+.projetos-track{
+    display: flex;
+    gap: 30px;
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projetos-seta{
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-3);
+    color: var(--gold-light);
+    border: 1px solid rgba(203,165,91,.25);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.projetos-seta:hover{
+    background: var(--gold);
+    color: var(--dark);
+    transform: scale(1.08);
+}
+
+.projetos-dots{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 45px;
+}
+
+.projetos-dots button{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,.2);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.projetos-dots button.active{
+    background: var(--gold);
+    transform: scale(1.2);
 }
 
 .projeto-card{
+    flex: 0 0 calc((100% - 60px) / 3);
     position:relative;
     height:450px;
     overflow:hidden;
     border-radius: var(--radius);
     cursor:pointer;
+    opacity: .4;
+    transform: scale(.94);
+    transition: opacity .9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform .9s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow .35s ease;
+}
+
+.projeto-card.is-active{
+    opacity: 1;
+    transform: scale(1);
 }
 
 .projeto-card img{
@@ -667,7 +738,7 @@ nav a,
     padding: 120px 0;
     background:
         linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.82)),
-        url("assets/produtos/300.jpg") center center / cover no-repeat;
+        url("assets/backgrounds/fundo-sobre.jpg") center center / cover no-repeat;
 
     overflow: hidden;
 }
@@ -1121,6 +1192,61 @@ nav a,
     opacity: 1;
 }
 
+/* Modal de imagem */
+.img-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease;
+}
+
+.img-modal.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.img-modal img{
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transform: scale(.92);
+    transition: transform .3s ease;
+}
+
+.img-modal.active img{
+    transform: scale(1);
+}
+
+.img-modal-close{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-3);
+    color: var(--gold-light);
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.img-modal-close:hover{
+    background: var(--gold);
+    color: var(--dark);
+    transform: rotate(90deg);
+}
+
 /* ============================= */
 /* RESPONSIVO */
 /* ============================= */
@@ -1293,14 +1419,20 @@ nav a,
         font-size:40px;
     }
 
-    .projetos-galeria{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
+  .projetos-track{
+    gap: 20px;
+}
 
-    .projeto-card{
-        height:380px;
-    }
+.projeto-card{
+    flex: 0 0 100%;
+    height:380px;
+}
+
+.projetos-seta{
+    width: 40px;
+    height: 40px;
+    font-size: .95rem;
+}
 
     .projeto-overlay{
         padding:25px;
@@ -1441,6 +1573,10 @@ nav a,
     .depoimentos-seta{
         display: none;
     }
+
+    .projetos-seta{
+    display: none;
+}
     
 
 }
