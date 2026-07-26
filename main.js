@@ -29,9 +29,18 @@ window.addEventListener("scroll", () => {
     }
 
 });
-/* Carrossel genérico (depoimentos e projetos) */
+/* Carrossel (depoimentos e projetos) */
 
-function createCarousel({ trackId, dotsId, prevId, nextId, viewDesktop, viewMobile, breakpoint, autoplayDelay }) {
+function createCarousel({
+    trackId,
+    dotsId,
+    prevId,
+    nextId,
+    viewDesktop,
+    viewMobile,
+    breakpoint,
+    autoplayDelay
+}) {
 
     const track = document.getElementById(trackId);
     const cards = Array.from(track.children);
@@ -118,16 +127,27 @@ function createCarousel({ trackId, dotsId, prevId, nextId, viewDesktop, viewMobi
         updateActiveCards();
     }
 
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
+    function next() {
+        goTo(current + 1);
+    }
+
+    function prev() {
+        goTo(current - 1);
+    }
 
     function restartAutoplay() {
         clearInterval(autoplayTimer);
         autoplayTimer = setInterval(next, autoplayDelay);
     }
 
-    nextBtn.addEventListener("click", () => { next(); restartAutoplay(); });
-    prevBtn.addEventListener("click", () => { prev(); restartAutoplay(); });
+    nextBtn.addEventListener("click", () => {
+        next();
+        restartAutoplay();
+    });
+    prevBtn.addEventListener("click", () => {
+        prev();
+        restartAutoplay();
+    });
 
     track.addEventListener("mouseenter", () => clearInterval(autoplayTimer));
     track.addEventListener("mouseleave", restartAutoplay);
@@ -139,7 +159,9 @@ function createCarousel({ trackId, dotsId, prevId, nextId, viewDesktop, viewMobi
         startX = e.touches[0].clientX;
         isDragging = true;
         clearInterval(autoplayTimer);
-    }, { passive: true });
+    }, {
+        passive: true
+    });
 
     track.addEventListener("touchend", (e) => {
         if (!isDragging) return;
@@ -194,7 +216,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("in-view");
-            revealObserver.unobserve(entry.target); // anima só uma vez
+            revealObserver.unobserve(entry.target);
         }
     });
 }, {
@@ -218,7 +240,7 @@ document.querySelectorAll(".projeto-card").forEach(card => {
     });
 });
 
-function closeImgModal(){
+function closeImgModal() {
     imgModal.classList.remove("active");
     document.body.style.overflow = "";
 }

@@ -411,7 +411,6 @@ nav a,
 .diferenciais .item .textos p {
     font-size: 0.8rem;
     color: var(--gold-light);
-    /* dourado, ajuste pro tom exato da paleta */
     letter-spacing: 0.5px;
     white-space: nowrap;
 }
@@ -581,8 +580,7 @@ nav a,
     line-height: 1.8;
 }
 
-/* GALERIA */
-/* CARROSSEL DE PROJETOS */
+/* Galeria e carrosel */
 
 .projetos-carrossel {
     position: relative;
@@ -731,11 +729,9 @@ nav a,
     display: block;
     width: 45px;
     height: 2px;
-    background: var(--gold);
+    background: var(--gold-light);
     margin-bottom: 15px;
 }
-
-/* Modal de imagem */
 
 /* Modal de imagem */
 .img-modal {
@@ -1266,13 +1262,11 @@ nav a,
     opacity: 1;
 }
 
-/* ============================= */
-/* RESPONSIVO */
-/* ============================= */
 
-/* =========================
-   900px — Menu mobile / Home / Produtos grid
-========================= */
+/* Responsividade */
+
+
+/* 900px — Menu mobile / Home / Produtos grid */
 
 @media(max-width:900px) {
 
@@ -1343,9 +1337,7 @@ nav a,
     transform: translateY(0);
 }
 
-/* =========================
-   768px — Depoimentos / Sobre / Projetos
-========================= */
+/* 768px — Depoimentos / Sobre / Projetos */
 
 @media(max-width:768px) {
 
@@ -1504,9 +1496,7 @@ nav a,
 
 }
 
-/* =========================
-   600px — Produtos grid
-========================= */
+/* 600px — Produtos grid */
 
 @media(max-width:600px) {
 
@@ -1516,9 +1506,7 @@ nav a,
 
 }
 
-/* =========================
-   576px — Whatsapp flutuante / Sobre
-========================= */
+/* 576px — Whatsapp flutuante / Sobre  */
 
 @media(max-width:576px) {
 
@@ -1546,9 +1534,7 @@ nav a,
 
 }
 
-/* =========================
-   576px — Footer
-========================= */
+/* 576px — Footer */
 
 @media(max-width: 560px) {
 
@@ -1589,9 +1575,7 @@ nav a,
 
 }
 
-/* =========================
-   480px — Depoimentos (setas)
-========================= */
+/* 480px — Depoimentos (setas) */
 
 @media(max-width: 480px) {
 
@@ -1610,8 +1594,6 @@ nav a,
         font-size: 1.25rem;
         line-height: 1.7;
         margin-bottom: 45px;
-        /* background-color: red; */
-
     }
 
     .depoimentos-seta {
@@ -1621,8 +1603,6 @@ nav a,
     .projetos-seta {
         display: none;
     }
-
-
 }
 
 @media(max-width: 360px) {
@@ -1630,5 +1610,4 @@ nav a,
     .hero-content h1 {
         font-size: clamp(2.8rem, 6vw, 4.8rem);
     }
-
 }
