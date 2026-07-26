@@ -1485,14 +1485,12 @@ nav a,
         white-space: normal;
     }
 
-    .img-modal-frame {
-        width: min(85vw, 340px);
-        height: 55vh;
-        max-height: 450px;
+    .img-modal-frame{
+    width: min(85vw, 340px);
+    height: 34vh;
+    max-height: 280px;
     }
-
-
-
+    
 }
 
 /* =========================
@@ -1569,16 +1567,16 @@ nav a,
 
 /* Modal de imagem para celular */
 
-@media(max-width: 500px) {
+@media(max-width: 500px){
 
-    .img-modal {
+    .img-modal{
         padding: 24px 20px;
     }
 
-    .img-modal-frame {
+    .img-modal-frame{
         width: min(78vw, 300px);
-        height: 48vh;
-        max-height: 380px;
+        height: 30vh;
+        max-height: 220px;
     }
 
 }
