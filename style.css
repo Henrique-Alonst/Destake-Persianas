@@ -737,6 +737,7 @@ nav a,
 
 /* Modal de imagem */
 
+/* Modal de imagem */
 .img-modal {
     position: fixed;
     inset: 0;
@@ -763,6 +764,38 @@ nav a,
     justify-content: center;
 }
 
+.img-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.img-modal-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: var(--dark-3);
+    color: var(--gold-light);
+    border-radius: var(--radius-full);
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.img-modal-voltar:hover {
+    background: var(--gold);
+    color: var(--dark);
+    transform: translateY(-2px);
+}
+
+.img-modal-voltar i {
+    font-size: .9rem;
+}
+
 .img-modal img {
     max-width: 100%;
     max-height: 100%;
@@ -780,28 +813,6 @@ nav a,
     transform: scale(1);
 }
 
-.img-modal-close {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--dark-3);
-    color: var(--gold-light);
-    border-radius: 50%;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.img-modal-close:hover {
-    background: var(--gold);
-    color: var(--dark);
-    transform: rotate(90deg);
-}
 
 /* Sobre */
 
@@ -1485,12 +1496,12 @@ nav a,
         white-space: normal;
     }
 
-    .img-modal-frame{
-    width: min(85vw, 340px);
-    height: 34vh;
-    max-height: 280px;
+    .img-modal-frame {
+        width: min(85vw, 500px);
+        height: 50vh;
+        max-height: 480px;
     }
-    
+
 }
 
 /* =========================
@@ -1528,12 +1539,9 @@ nav a,
         line-height: 1.8;
     }
 
-    .img-modal-close {
-        top: 16px;
-        right: 16px;
-        width: 42px;
-        height: 42px;
-        font-size: 1.2rem;
+    .img-modal-voltar {
+        padding: 10px 22px;
+        font-size: .85rem;
     }
 
 }
@@ -1567,16 +1575,16 @@ nav a,
 
 /* Modal de imagem para celular */
 
-@media(max-width: 500px){
+@media(max-width: 500px) {
 
-    .img-modal{
-        padding: 24px 20px;
+    .img-modal {
+        padding: 20px 16px;
     }
 
-    .img-modal-frame{
-        width: min(78vw, 300px);
-        height: 30vh;
-        max-height: 220px;
+    .img-modal-frame {
+        width: min(90vw, 400px);
+        height: 50vh;
+        max-height: 420px;
     }
 
 }
