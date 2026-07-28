@@ -1612,7 +1612,7 @@ nav a,
     }
 }
 
-/* Correções para o carrossel */
+/* Correções para o carrossel, conflito entre os scroll vertical e horizontal */
 .projetos-track,
 .depoimentos-track {
     touch-action: pan-y;
@@ -1628,14 +1628,4 @@ nav a,
 .projetos-track.is-dragging,
 .depoimentos-track.is-dragging {
     transition: none !important;
-}
-
-.projetos-viewport,
-.depoimentos-viewport {
-    cursor: grab;
-}
-
-.projetos-viewport:active,
-.depoimentos-viewport:active {
-    cursor: grabbing;
 }
