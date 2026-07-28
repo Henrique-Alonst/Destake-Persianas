@@ -1611,3 +1611,31 @@ nav a,
         font-size: clamp(2.8rem, 6vw, 4.8rem);
     }
 }
+
+/* Correções para o carrossel */
+.projetos-track,
+.depoimentos-track {
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    will-change: transform;
+}
+
+.projeto-card img {
+    pointer-events: none;
+}
+
+.projetos-track.is-dragging,
+.depoimentos-track.is-dragging {
+    transition: none !important;
+}
+
+.projetos-viewport,
+.depoimentos-viewport {
+    cursor: grab;
+}
+
+.projetos-viewport:active,
+.depoimentos-viewport:active {
+    cursor: grabbing;
+}

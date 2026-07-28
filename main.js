@@ -158,6 +158,7 @@ function createCarousel({
     track.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
+        track.classList.add("is-dragging");
         clearInterval(autoplayTimer);
     }, {
         passive: true
@@ -166,6 +167,7 @@ function createCarousel({
     track.addEventListener("touchend", (e) => {
         if (!isDragging) return;
         isDragging = false;
+        track.classList.remove("is-dragging");
         const endX = e.changedTouches[0].clientX;
         const diff = startX - endX;
         if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
