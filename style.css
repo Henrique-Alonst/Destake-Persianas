@@ -597,7 +597,6 @@ nav a,
 .projetos-track {
     display: flex;
     gap: 30px;
-    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .projetos-seta {
@@ -1047,7 +1046,6 @@ nav a,
 .depoimentos-track {
     display: flex;
     gap: 30px;
-    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .depoimento-card {

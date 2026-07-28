@@ -29,7 +29,19 @@ window.addEventListener("scroll", () => {
     }
 
 });
-/* Carrossel (depoimentos e projetos) */
+
+/* ============================================================
+   Carrossel infinito (depoimentos e projetos)
+   - Clona os cards antes/depois do conjunto original para dar
+     a ilusão de loop infinito sem "correr" pela trilha inteira.
+   - Resize só reage a mudança real de LARGURA (ignora a barra
+     de endereço do celular escondendo/aparecendo no scroll).
+   - Swipe só dispara troca de slide se o gesto for
+     predominantemente horizontal (evita conflito com o scroll
+     vertical da página).
+============================================================ */
+
+const ANIM_DURATION = 1500; 
 
 function createCarousel({
     trackId,
@@ -43,31 +55,59 @@ function createCarousel({
 }) {
 
     const track = document.getElementById(trackId);
-    const cards = Array.from(track.children);
+    const originalCards = Array.from(track.children);
+    const N = originalCards.length; 
+
     const dotsWrap = document.getElementById(dotsId);
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
+
+    originalCards.forEach((card, i) => {
+        card.dataset.index = i;
+    });
+
+    const fragBefore = document.createDocumentFragment();
+    originalCards.forEach(c => fragBefore.appendChild(c.cloneNode(true)));
+    track.insertBefore(fragBefore, track.firstChild);
+
+    const fragAfter = document.createDocumentFragment();
+    originalCards.forEach(c => fragAfter.appendChild(c.cloneNode(true)));
+    track.appendChild(fragAfter);
+
+    const allCards = Array.from(track.children); 
+
+    track.style.transition = "none";
 
     let current = 0;
     let autoplayTimer = null;
     let currentOffset = 0;
     let rafId = null;
+    let wrapSnapTimeout = null;
 
     function perView() {
         return window.innerWidth <= breakpoint ? viewMobile : viewDesktop;
     }
 
     function totalPages() {
-        return Math.ceil(cards.length / perView());
+        return Math.ceil(N / perView());
+    }
+
+    function domIndexForPage(page, zone) {
+        const view = perView();
+        const idx = Math.min(page * view, N - 1);
+        if (zone === -1) return idx;
+        if (zone === 1) return 2 * N + idx;
+        return N + idx;
     }
 
     function buildDots() {
         dotsWrap.innerHTML = "";
-        for (let i = 0; i < totalPages(); i++) {
+        const pages = totalPages();
+        for (let i = 0; i < pages; i++) {
             const dot = document.createElement("button");
             if (i === current) dot.classList.add("active");
             dot.addEventListener("click", () => {
-                goTo(i);
+                goToPage(i);
                 restartAutoplay();
             });
             dotsWrap.appendChild(dot);
@@ -80,20 +120,24 @@ function createCarousel({
         });
     }
 
+
     function updateActiveCards() {
         const view = perView();
         const start = current * view;
         const end = start + view;
-        cards.forEach((card, i) => {
-            card.classList.toggle("is-active", i >= start && i < end);
+        allCards.forEach(card => {
+            const idx = Number(card.dataset.index);
+            card.classList.toggle("is-active", idx >= start && idx < end);
         });
     }
 
     function easeOutExpo(t) {
-        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
-    function animateTrackTo(target, duration = 900) {
+    function animateTrackTo(target, duration = ANIM_DURATION) {
         cancelAnimationFrame(rafId);
         const start = currentOffset;
         const startTime = performance.now();
@@ -113,15 +157,8 @@ function createCarousel({
         rafId = requestAnimationFrame(step);
     }
 
-    function goTo(page, animate = true) {
-        const pages = totalPages();
-        const view = perView();
-
-        current = ((page % pages) + pages) % pages;
-
-        const targetIndex = Math.min(current * view, cards.length - 1);
-        const offset = cards[targetIndex].offsetLeft;
-
+    function jumpTo(domIdx, animate) {
+        const offset = allCards[domIdx].offsetLeft;
         if (animate) {
             animateTrackTo(offset);
         } else {
@@ -129,17 +166,64 @@ function createCarousel({
             currentOffset = offset;
             track.style.transform = `translateX(-${offset}px)`;
         }
+    }
 
+    function clearWrapSnap() {
+        if (wrapSnapTimeout) {
+            clearTimeout(wrapSnapTimeout);
+            wrapSnapTimeout = null;
+        }
+    }
+
+    function setActivePage(page) {
+        current = page;
         updateDots();
         updateActiveCards();
     }
 
+    // Navegação direta (ex: clique numa bolinha específica)
+    function goToPage(page) {
+        clearWrapSnap();
+        const pages = totalPages();
+        const wrapped = ((page % pages) + pages) % pages;
+        setActivePage(wrapped);
+        jumpTo(domIndexForPage(wrapped, 0), true);
+    }
+
+    //Carrosel infinito 
+
     function next() {
-        goTo(current + 1);
+        clearWrapSnap();
+        const pages = totalPages();
+
+        if (current === pages - 1) {
+            jumpTo(domIndexForPage(0, 1), true);
+            setActivePage(0);
+
+            wrapSnapTimeout = setTimeout(() => {
+                jumpTo(domIndexForPage(0, 0), false);
+                wrapSnapTimeout = null;
+            }, ANIM_DURATION);
+        } else {
+            goToPage(current + 1);
+        }
     }
 
     function prev() {
-        goTo(current - 1);
+        clearWrapSnap();
+        const pages = totalPages();
+
+        if (current === 0) {
+            jumpTo(domIndexForPage(pages - 1, -1), true);
+            setActivePage(pages - 1);
+
+            wrapSnapTimeout = setTimeout(() => {
+                jumpTo(domIndexForPage(pages - 1, 0), false);
+                wrapSnapTimeout = null;
+            }, ANIM_DURATION);
+        } else {
+            goToPage(current - 1);
+        }
     }
 
     function restartAutoplay() {
@@ -159,11 +243,11 @@ function createCarousel({
     track.addEventListener("mouseenter", () => clearInterval(autoplayTimer));
     track.addEventListener("mouseleave", restartAutoplay);
 
-    // Swipe (touch) com distinção entre gesto horizontal e scroll vertical
+    // Swipe (touch) com distinção entre gesto horizontal e scroll vertical 
     let startX = 0;
     let startY = 0;
     let isDragging = false;
-    let isHorizontalSwipe = null; 
+    let isHorizontalSwipe = null;
 
     track.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
@@ -221,16 +305,19 @@ function createCarousel({
 
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
+            clearWrapSnap();
             const pages = totalPages();
             current = Math.min(current, pages - 1);
 
             buildDots();
-            goTo(current, false);
+            setActivePage(current);
+            jumpTo(domIndexForPage(current, 0), false);
         }, 200);
     });
 
     buildDots();
-    goTo(0, false);
+    setActivePage(0);
+    jumpTo(domIndexForPage(0, 0), false);
     restartAutoplay();
 }
 
