@@ -113,7 +113,7 @@ function createCarousel({
         rafId = requestAnimationFrame(step);
     }
 
-    function goTo(page) {
+    function goTo(page, animate = true) {
         const pages = totalPages();
         const view = perView();
 
@@ -122,7 +122,14 @@ function createCarousel({
         const targetIndex = Math.min(current * view, cards.length - 1);
         const offset = cards[targetIndex].offsetLeft;
 
-        animateTrackTo(offset);
+        if (animate) {
+            animateTrackTo(offset);
+        } else {
+            cancelAnimationFrame(rafId);
+            currentOffset = offset;
+            track.style.transform = `translateX(-${offset}px)`;
+        }
+
         updateDots();
         updateActiveCards();
     }
@@ -152,40 +159,78 @@ function createCarousel({
     track.addEventListener("mouseenter", () => clearInterval(autoplayTimer));
     track.addEventListener("mouseleave", restartAutoplay);
 
+    // Swipe (touch) com distinção entre gesto horizontal e scroll vertical
     let startX = 0;
+    let startY = 0;
     let isDragging = false;
+    let isHorizontalSwipe = null; 
 
     track.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
         isDragging = true;
-        track.classList.add("is-dragging");
+        isHorizontalSwipe = null;
         clearInterval(autoplayTimer);
-    }, {
-        passive: true
-    });
+    }, { passive: true });
+
+    track.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = startX - currentX;
+        const diffY = startY - currentY;
+
+        if (isHorizontalSwipe === null && (Math.abs(diffX) > 8 || Math.abs(diffY) > 8)) {
+            isHorizontalSwipe = Math.abs(diffX) > Math.abs(diffY);
+            track.classList.toggle("is-dragging", isHorizontalSwipe);
+        }
+    }, { passive: true });
 
     track.addEventListener("touchend", (e) => {
         if (!isDragging) return;
         isDragging = false;
         track.classList.remove("is-dragging");
+
+        if (isHorizontalSwipe === false) {
+            isHorizontalSwipe = null;
+            return;
+        }
+
         const endX = e.changedTouches[0].clientX;
-        const diff = startX - endX;
-        if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
+        const endY = e.changedTouches[0].clientY;
+        const diffX = startX - endX;
+        const diffY = startY - endY;
+
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+            diffX > 0 ? next() : prev();
+        }
+
+        isHorizontalSwipe = null;
         restartAutoplay();
     });
 
+    let lastWidth = window.innerWidth;
     let resizeTimeout;
+
     window.addEventListener("resize", () => {
+        const newWidth = window.innerWidth;
+
+        if (newWidth === lastWidth) return;
+        lastWidth = newWidth;
+
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            current = 0;
+            const pages = totalPages();
+            current = Math.min(current, pages - 1);
+
             buildDots();
-            goTo(0);
+            goTo(current, false);
         }, 200);
     });
 
     buildDots();
-    goTo(0);
+    goTo(0, false);
     restartAutoplay();
 }
 
